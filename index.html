@@ -53,13 +53,6 @@ h3{font:400 1.3rem var(--d);margin:2.2rem 0 .6rem}
 .big{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin:1.5rem 0}
 .big b{font:400 clamp(3rem,9vw,7rem)/.9 var(--d);letter-spacing:-.04em;display:block}
 .big .t b{color:var(--hot)}
-.gal{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1rem 0;cursor:grab;scrollbar-width:thin}
-.gal figure{flex:0 0 min(80vw,560px);scroll-snap-align:start;background:#fff;border-radius:6px;overflow:hidden}
-.gal figcaption{font:.8rem var(--m);padding:.6rem .8rem;background:var(--panel)}
-.frame{border:1px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
-.frame i{display:flex;gap:5px;padding:7px 10px;background:var(--panel);border-bottom:1px solid var(--line)}.frame i s{width:9px;height:9px;border-radius:50%;background:var(--line)}
-.shots{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
-.shots.three{grid-template-columns:1fr 1fr 1fr}
 .ring{position:relative;width:min(100%,300px);aspect-ratio:1;margin:auto;perspective:700px;--rx:60deg;--ry:0deg}
 .ring i{position:absolute;inset:0;border-radius:50%;border:10px solid #8a949c;box-shadow:inset 0 0 18px #fff8,0 0 22px #0006;animation:spin 9s linear infinite;transform:rotateX(var(--rx)) rotateY(var(--ry))}
 .ring i:nth-child(2){inset:18%;border-color:var(--hot);animation-duration:6s;animation-direction:reverse}
@@ -87,7 +80,7 @@ h3{font:400 1.3rem var(--d);margin:2.2rem 0 .6rem}
 #toast{position:fixed;bottom:1.2rem;left:50%;transform:translate(-50%,200%);background:var(--ink);color:var(--paper);padding:.6rem 1.2rem;border-radius:99px;z-index:80;transition:transform .4s;font:.85rem var(--m)}#toast.on{transform:translate(-50%,0)}
 body.quick #heat,body.quick #cur{display:none}body.quick *{animation:none!important;transition:none!important}body.quick h2{clip-path:none}
 @media(prefers-reduced-motion:reduce){#heat,#cur{display:none!important}*{animation:none!important;transition:none!important}h2{clip-path:none}html{scroll-behavior:auto}}
-@media(max-width:800px){.cols,.lede,.big,.shots,.shots.three{grid-template-columns:1fr}.row{justify-content:flex-start}nav .hm{display:none}section{padding:4rem 0}}
+@media(max-width:800px){.cols,.lede,.big{grid-template-columns:1fr}.row{justify-content:flex-start}nav .hm{display:none}section{padding:4rem 0}}
 
 body{transition:background .4s,color .4s}[data-theme=dark]{--paper:#0e0e0f;--ink:#ecebe6;--mid:#9a9992;--line:#2a2a2b;--panel:#18181a}
 img{height:auto}.wrap,.cols>*,.lede>*{min-width:0}.mono{overflow-wrap:anywhere}
@@ -111,14 +104,8 @@ h2{font-size:clamp(1.8rem,5vw,3.6rem)}.big b{font-size:clamp(2.2rem,7vw,4.6rem)}
 .rv{opacity:0;transform:translateY(46px) scale(.95);transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--dl,0ms)}
 .cols>:nth-child(odd).rv{transform:translateX(-60px) scale(.95)}.cols>:nth-child(even).rv{transform:translateX(60px) scale(.95)}
 .rv.in,.cols>:nth-child(n).rv.in{opacity:1;transform:none}body.quick .rv{opacity:1!important;transform:none!important}
-.car{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);margin:1.5rem 0;touch-action:pan-y}
-.ct{display:flex;transition:transform .8s cubic-bezier(.7,0,.2,1)}
-.cs{flex:0 0 100%;padding:.8rem;display:grid;place-items:center;opacity:.3;transform:scale(.9);transition:opacity .8s,transform .8s}.cs.on{opacity:1;transform:none}
-.cs img{width:100%;max-height:min(62vh,520px);object-fit:contain;border-radius:6px;background:#fff}.cs p{font:.78rem var(--m);color:var(--mid);margin-top:.6rem;text-align:center}
-.cb{position:absolute;top:50%;translate:0 -50%;width:42px;height:42px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.3rem;z-index:2}.cb.p{left:.6rem}.cb.n{right:.6rem}.cb:hover{background:var(--hot);color:#000;border-color:var(--hot)}
-.cd{display:flex;gap:.4rem;justify-content:center;padding:0 0 .8rem}.cd button{width:9px;height:9px;border-radius:99px;border:0;background:var(--line);cursor:pointer;padding:0;transition:width .3s,background .3s}.cd .on{width:26px;background:var(--hot)}
 @media(max-width:900px){.cols,.lede,.big{grid-template-columns:1fr}.row{justify-content:flex-start}.cols>:nth-child(n).rv{transform:translateY(40px)}}
-@media(max-width:700px){nav{gap:.3rem;padding:.55rem .8rem}nav .brand,nav .em{display:none}nav a,nav button{font-size:.72rem;padding:.35rem .65rem}#hero{padding-top:5rem}section{padding:3.5rem 0}.cb{width:34px;height:34px}.lede small{font-size:.72rem}}
+@media(max-width:700px){nav{gap:.3rem;padding:.55rem .8rem}nav .brand,nav .em{display:none}nav a,nav button{font-size:.72rem;padding:.35rem .65rem}#hero{padding-top:5rem}section{padding:3.5rem 0}.lede small{font-size:.72rem}}
 .chips{align-content:flex-start;align-items:flex-start}.chips span{line-height:1.3;white-space:nowrap;padding:.4rem .85rem}
 .big{container-type:inline-size}.big>*{min-width:0}.big b{white-space:nowrap;font-size:clamp(1.6rem,3.2vw,3rem);font-size:min(4.2rem,7.2cqw)}@media(max-width:900px){.big b{font-size:clamp(2.2rem,13cqw,4rem)}}
 h1{font-size:clamp(2.8rem,12vw,9rem);letter-spacing:-.02em;line-height:1}h1 em{font-style:italic}
@@ -130,12 +117,40 @@ h2{font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.01em;line-height:1}h3{fon
 .pt{font:400 clamp(2rem,5vw,3.6rem)/1 var(--d);letter-spacing:-.01em;margin:0 0 1rem}
 h4{font:400 1.45rem var(--d);margin:2rem 0 .6rem}
 .todo{background:#fff3c4;color:#3d2c00;border:1px dashed #a07000;border-radius:4px;padding:0 .3em;font:inherit;font-size:.92em}
+/* refresh: project card */
+.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+.pn{font:.78rem var(--m);color:var(--mid);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+.out{font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.4;max-width:44ch;margin-bottom:1rem}
+.warn{border-left:3px solid var(--hot);padding:.4rem .8rem;margin:0 0 1rem;background:var(--panel);font-size:.95rem}
+.tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.3rem}
+.tags li{font:.78rem var(--m);border:1px solid var(--line);border-radius:99px;padding:.25rem .65rem}
+.tags .role{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.facts{list-style:none;padding:0;margin:0 0 1.5rem;display:grid;gap:.75rem}
+.facts li{padding-left:1.2rem;position:relative}.facts li:before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--hot)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+figure{margin:0}figcaption{font:.78rem/1.5 var(--m);color:var(--mid);margin-top:.5rem}
+.zoom{display:block;cursor:zoom-in;border-radius:6px}
+.zoom img{width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:2rem 0;max-width:920px}
+.grid img{aspect-ratio:4/3;object-fit:contain}
+details.tech{border:1px solid var(--line);border-radius:8px;margin-top:1.5rem}
+details.tech>summary{cursor:pointer;padding:.8rem 1.2rem;font:500 1rem var(--b);min-height:44px;display:flex;align-items:center}
+details.tech[open]>summary{border-bottom:1px solid var(--line)}
+details.tech>div{padding:.4rem 1.2rem 1.4rem}details.tech>div>*+*{margin-top:1rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}caption{text-align:left;font:500 1rem var(--b);margin-bottom:.5rem}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}th{font:500 .8rem var(--m);color:var(--mid)}
+#lb{border:0;padding:1rem;background:var(--paper);color:var(--ink);border-radius:8px;max-width:min(96vw,1200px);max-height:94vh}
+#lb::backdrop{background:#000c}#lb img{max-width:100%;max-height:78vh;width:auto;height:auto;margin:auto;background:#fff}
+#lbc{font:.8rem var(--m);color:var(--mid);margin-top:.5rem}#lb form{display:flex;justify-content:flex-end;margin-bottom:.6rem}
+@media(max-width:900px){.card{grid-template-columns:1fr}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
 <a href="CV.pdf" download>CV</a><a class="em" href="mailto:chimdiazie2022@gmail.com">Email</a><a href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a>
 <button id="qv" aria-pressed="false" title="Calm, fast layout">Quick view</button><button id="th" aria-label="Switch between light and dark">Dark</button></nav>
 <div id="cur" aria-hidden="true"></div><div id="toast" role="status"></div>
+<dialog id="lb" aria-label="Enlarged image"><form method="dialog"><button class="btn">Close</button></form><img id="lbi" src="data:," alt=""><p id="lbc"></p></dialog>
 <main id="top">
 <header id="hero"><canvas id="heat" aria-hidden="true"></canvas><div class="wrap">
 <h1>Chimdiume<br><em>Azie</em></h1>
@@ -143,36 +158,88 @@ h4{font:400 1.45rem var(--d);margin:2rem 0 .6rem}
 <div class="row"><a class="btn solid mag" href="CV.pdf" download>Download CV</a><button class="btn mag" id="cp">Copy email</button><a class="btn mag" href="#work" data-cur="Open">See the work</a></div></div></div></header><div class="mq" aria-hidden="true"><div><span>Explainable AI</span><i></i><span>Grad-CAM</span><i></i><span>PyTorch</span><i></i><span>Flask</span><i></i><span>Local-first agents</span><i></i><span>Open to remote work and relocation</span><i></i><span>Explainable AI</span><i></i><span>Grad-CAM</span><i></i><span>PyTorch</span><i></i><span>Flask</span><i></i><span>Local-first agents</span><i></i><span>Open to remote work and relocation</span><i></i></div></div>
 
 <section id="work" aria-labelledby="work-h"><div class="wrap"><h2 id="work-h">Selected work</h2>
-<article class="proj" id="nellow">
-<h3 class="pt">Nellow</h3>
-<p class="sum">An AI agent I built that searches the live web, reads what it finds and answers with sources. It runs on my own hardware or in the cloud, with a local Llama model for quick answers and Claude for harder reasoning.</p>
-<p class="mono"><a href="https://github.com/Achimdi/nellow" target="_blank" rel="noopener" data-cur="Open">github.com/Achimdi/nellow</a></p>
-<div class="car" data-cur="Drag" aria-roledescription="carousel"><div class="ct"><div class="cs"><img src="assets/img/nellow-landing.webp" alt="Nellow landing page" loading="lazy"><p>Nellow landing page</p></div><div class="cs"><img src="assets/img/nellow-workspace.webp" alt="Nellow workspace: history, projects, Fast selector" loading="lazy"><p>Nellow workspace: history, projects, Fast selector</p></div></div><button class="cb p" aria-label="Previous slide">&lsaquo;</button><button class="cb n" aria-label="Next slide">&rsaquo;</button><div class="cd"></div></div>
+<article class="proj" id="nellow" aria-labelledby="nellow-h">
+<div class="card"><div>
+<p class="pn">01 · LLM agent</p>
+<h3 class="pt" id="nellow-h">Nellow</h3>
+<p class="out">An AI agent that searches the web, reads the pages it finds and answers with the sources attached, on a local model or a cloud model.</p>
+<ul class="tags" aria-label="Role and stack"><li class="role">Solo build</li><li>Python</li><li>FastAPI</li><li>Ollama</li><li>Groq API</li><li>Tool calling</li><li>SQLite</li></ul>
+<ul class="facts">
+<li>Three modes: Balanced runs entirely on the device (Llama 3.2 3B through Ollama). Turbo, and Thorough when a Groq key is set, use gpt-oss-120b on Groq.</li>
+<li>Tool calling with web search, news search and a page reader. Each answer is saved with the source links it fetched.</li>
+<li>Multi-user FastAPI backend: accounts, guest sessions, projects with custom instructions, streamed replies and hourly rate limits.</li>
+</ul>
+<p class="links"><a class="btn solid" href="https://github.com/Achimdi/nellow" target="_blank" rel="noopener">Code on GitHub</a><span class="todo">[TODO: link to a screen recording or live demo]</span><span class="todo">[TODO: write-up link]</span></p>
+</div>
+<figure class="cvis"><a class="zoom" href="assets/img/nellow-workspace.webp"><img src="assets/img/nellow-workspace.webp" width="1200" height="558" loading="lazy" alt="Nellow workspace: chat history and projects on the left, suggested prompts in the middle, and a mode picker next to the message box."></a><figcaption>Workspace with chat history, projects and the mode picker. This screenshot is from an earlier build that still had a Fast mode.</figcaption></figure>
+</div>
 <div class="cols"><div><div class="ring" id="ring" aria-hidden="true"><i></i><i></i><i></i></div><p class="mono" style="text-align:center;margin-top:1rem">Move over the ring. Nellow's own interface is metallic black and silver with one yellow accent.</p></div>
 <div><div class="demo" id="demo"><div class="top"><span>Demo recreation, scripted. Not a live model.</span><span class="seg" role="group" aria-label="Mode"><button aria-pressed="true" data-m="fast">Fast</button><button aria-pressed="false" data-m="deep">Deep</button></span></div>
 <div class="log" id="log" aria-live="polite"></div><div class="ask"><button data-q="0">What is an API?</button><button data-q="1">Compare two ways to host an agent</button></div></div></div></div>
+<details class="tech"><summary>Technical details</summary><div>
+<table><caption>Modes and models</caption><thead><tr><th scope="col">Mode</th><th scope="col">Runs</th><th scope="col">Model</th></tr></thead><tbody>
+<tr><td>Balanced</td><td>On device</td><td>llama3.2:3b through Ollama, with a search router</td></tr>
+<tr><td>Thorough</td><td>Cloud if a Groq key is set, otherwise on device</td><td>gpt-oss-120b (medium reasoning effort), or qwen3:4b with thinking</td></tr>
+<tr><td>Turbo</td><td>Cloud</td><td>gpt-oss-120b (low reasoning effort), falls back to gpt-oss-20b</td></tr>
+<tr><td>Questions about an image</td><td>On device</td><td>gemma3:4b</td></tr>
+</tbody></table>
+<p>Accounts: passwords hashed with scrypt, bearer tokens, guest sessions. Rate limits per network: 5 sign-ups, 20 logins and 10 guest sessions an hour. Per user: 60 messages an hour, 20 for guests.</p>
+<p class="mono">Stack: Python, FastAPI, Uvicorn, Ollama, Groq API, httpx, ddgs (DuckDuckGo search), trafilatura, SQLite, HTML/CSS/JavaScript.</p>
+<figure><a class="zoom" href="assets/img/nellow-landing.webp"><img src="assets/img/nellow-landing.webp" width="1200" height="556" loading="lazy" alt="Nellow landing page in a dark theme with a sign-in prompt."></a><figcaption>Landing page</figcaption></figure>
+</div></details>
 </article>
-<article class="proj" id="neuroscan">
-<h3 class="pt">NeuroScan AI</h3>
-<p class="sum">Final-year project: a system that classifies brain MRI into four Alzheimer's stages, shows which regions drove each prediction, and wraps both in a hospital web app. It was built to run on a laptop with no GPU, so hospitals with few resources could use it. It is a research prototype, not clinically validated and not a medical device.</p>
-<p class="mono"><a href="https://github.com/Achimdi/neuroscan-ai" target="_blank" rel="noopener" data-cur="Open">github.com/Achimdi/neuroscan-ai</a></p>
-<div class="cols" style="margin-top:2rem"><div>
-<div class="lens" id="lens" tabindex="0" data-cur="Look" aria-label="Grad-CAM lens. Move the pointer or use arrow keys to reveal the heatmap over the MRI."><img src="assets/img/mri-slice.webp" alt="Brain MRI slice"><img class="cam" src="assets/img/gradcam.webp" alt="Grad-CAM heatmap of the same slice"></div>
-<p class="mono" style="margin-top:.6rem">Real MRI slice and its Grad-CAM from the app (case predicted VeryMildDemented, 100.0% confidence). Move over it, or use arrow keys. <label>Lens <input type="range" id="lr" min="40" max="220" value="90"></label></p></div>
-<div><h4 style="margin-top:0">Four stages, honest numbers</h4><div class="stages" id="stg" role="group" aria-label="Stage"></div><div class="panel" id="sp" aria-live="polite"></div>
-<div class="big"><div><b><span class="cnt" data-to="98.66">98.66</span>%</b>validation accuracy, best at epoch 19</div><div class="t"><b><span class="cnt" data-to="77.35">77.35</span>%</b>held-out test accuracy</div></div></div></div>
-
-<div class="cols"><div><h4>What I found, and why</h4><p>The original test split was heavily skewed: 88.5% NonDemented against 40.8% in training. Minority classes suffered most, and an always-NonDemented model would score about 88.5% on that test set, so I treat 77.35% as a warning about the split, not as a verdict on the idea.</p><p>Next steps: stratified splitting, GPU training, local Nigerian hospital data, clinical validation, longitudinal tracking and a lightweight offline or mobile version.</p></div>
-<div><h4>What I built</h4><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps, which for Mild and Moderate cases concentrated on the hippocampus, medial temporal lobe and ventricles. A Flask app with Admin and Doctor roles, JWT authentication, one-time registration codes, patient records, MRI upload, saved results and an audit trail for patient transfers (SQLite, SQLAlchemy, 6 tables).</p><p>Data: OASIS Alzheimer's MRI from Kaggle, 44,355 training images (80/20 split) and a separate test set of 46,184. Class-weighted cross-entropy for imbalance, light augmentation, Adam at 1e-4, batch 32, 25 epochs, about 119 hours of training on a laptop with no GPU.</p></div></div>
-<div class="car" data-cur="Drag" aria-roledescription="carousel"><div class="ct"><div class="cs"><img src="assets/img/neuroscan-signin.webp" alt="Sign-in for Admin and Doctor roles" loading="lazy"><p>Sign-in for Admin and Doctor roles</p></div><div class="cs"><img src="assets/img/confusion-matrix.webp" alt="Confusion matrix on the test set" loading="lazy"><p>Confusion matrix on the test set</p></div><div class="cs"><img src="assets/img/training-curves.webp" alt="Training and validation curves" loading="lazy"><p>Training and validation curves</p></div><div class="cs"><img src="assets/img/roc-curves.webp" alt="ROC curves, four classes" loading="lazy"><p>ROC curves, four classes</p></div></div><button class="cb p" aria-label="Previous slide">&lsaquo;</button><button class="cb n" aria-label="Next slide">&rsaquo;</button><div class="cd"></div></div>
+<article class="proj" id="neuroscan" aria-labelledby="neuroscan-h">
+<div class="card"><div>
+<p class="pn">02 · Computer vision, explainable AI</p>
+<h3 class="pt" id="neuroscan-h">NeuroScan AI</h3>
+<p class="out">A four-stage Alzheimer's classifier for brain MRI with Grad-CAM heatmaps, built into a hospital web app that runs on a laptop with no GPU.</p>
+<p class="warn"><b>Research prototype.</b> Not clinically validated and not a medical device.</p>
+<ul class="tags" aria-label="Role and stack"><li class="role">Final-year project</li><li>PyTorch</li><li>EfficientNet-B0</li><li>Grad-CAM</li><li>Flask</li><li>SQLite</li></ul>
+<ul class="facts">
+<li>Fine-tuned EfficientNet-B0 on 44,355 OASIS MRI images on a laptop CPU: 25 epochs in about 119 hours.</li>
+<li>Every prediction comes with a Grad-CAM heatmap, saved to the patient record in a Flask app with Admin and Doctor roles.</li>
+<li>Honest result: 98.66% validation accuracy did not carry over to a differently balanced test set, and the model never caught a ModerateDemented case.</li>
+</ul>
+<p class="links"><span class="todo">[TODO: github.com/Achimdi/neuroscan-ai returns 404. Make the repo public, or tell me the right link]</span><span class="todo">[TODO: 60–90 s screen recording of the hospital app]</span><span class="todo">[TODO: write-up or thesis PDF link]</span></p>
+</div>
+<figure class="cvis"><div class="lens" id="lens" tabindex="0" data-cur="Look" aria-label="Grad-CAM lens. Move the pointer or use arrow keys to reveal the heatmap over the MRI."><img src="assets/img/mri-slice.webp" alt="Brain MRI slice"><img class="cam" src="assets/img/gradcam.webp" alt="Grad-CAM heatmap of the same slice"></div>
+<figcaption>Real MRI slice and its Grad-CAM from the app (case predicted VeryMildDemented, 100.0% confidence). Move over it, or use arrow keys. <label>Lens <input type="range" id="lr" min="40" max="220" value="90"></label></figcaption></figure>
+</div>
+<div class="cols results"><div><h4 style="margin-top:0">Four stages, honest numbers</h4><div class="stages" id="stg" role="group" aria-label="Stage"></div><div class="panel" id="sp" aria-live="polite"></div>
+<div class="big"><div><b><span class="cnt" data-to="98.66">98.66</span>%</b>validation accuracy, best at epoch 19</div><div class="t"><b><span class="cnt" data-to="77.35">77.35</span>%</b>held-out test accuracy</div></div></div>
+<div><h4>What I found, and why</h4><p>The original test split was heavily skewed: 88.5% NonDemented against 40.8% in training. Minority classes suffered most, and an always-NonDemented model would score about 88.5% on that test set, so I treat 77.35% as a warning about the split, not as a verdict on the idea.</p></div></div>
+<div class="grid">
+<figure><a class="zoom" href="assets/img/confusion-matrix.webp"><img src="assets/img/confusion-matrix.webp" width="800" height="660" loading="lazy" alt="Confusion matrix on the 46,184-image test set. Most NonDemented scans are correct; many are predicted VeryMildDemented, and no ModerateDemented scan is predicted correctly."></a><figcaption>Confusion matrix, held-out test set</figcaption></figure>
+<figure><a class="zoom" href="assets/img/training-curves.webp"><img src="assets/img/training-curves.webp" width="900" height="321" loading="lazy" alt="Training and validation loss and accuracy curves over 25 epochs."></a><figcaption>Training and validation curves</figcaption></figure>
+<figure><a class="zoom" href="assets/img/roc-curves.webp"><img src="assets/img/roc-curves.webp" width="800" height="636" loading="lazy" alt="One-vs-rest ROC curves for the four classes."></a><figcaption>ROC curves, four classes</figcaption></figure>
+<figure><a class="zoom" href="assets/img/neuroscan-signin.webp"><img src="assets/img/neuroscan-signin.webp" width="700" height="620" loading="lazy" alt="NeuroScan AI sign-in screen with Admin and Doctor roles."></a><figcaption>Sign-in for Admin and Doctor roles</figcaption></figure>
+</div>
+<details class="tech"><summary>Technical details</summary><div>
+<h4>Model and explanations</h4><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps, which for Mild and Moderate cases concentrated on the hippocampus, medial temporal lobe and ventricles.</p>
+<h4>Data and training</h4><p>OASIS Alzheimer's MRI from Kaggle: 44,355 training images (80/20 split) and a separate test set of 46,184. Class-weighted cross-entropy for imbalance, light augmentation, Adam at 1e-4, batch 32, 25 epochs, about 119 hours of training on a laptop with no GPU.</p>
+<h4>Hospital app</h4><p>Flask app with Admin and Doctor roles, JWT authentication, one-time registration codes, patient records, MRI upload, saved results and an audit trail for patient transfers (SQLite, SQLAlchemy, 6 tables).</p>
+<h4>Next steps</h4><p>Stratified splitting, GPU training, local Nigerian hospital data, clinical validation, longitudinal tracking and a lightweight offline or mobile version.</p>
 <p class="mono">Stack: Python, PyTorch, timm, torchvision, OpenCV, scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Flask, Flask-JWT-Extended, Flask-SQLAlchemy, SQLite, HTML/CSS/JavaScript.</p>
+</div></details>
 </article>
-<article class="proj" id="twzee">
-<h3 class="pt">Twzee Foods</h3>
-<div class="cols"><div><p class="sum">A mobile-first menu and WhatsApp ordering website for a Nigerian healthy-food business. Visitors browse the full menu, pick sizes and extras, and send a ready-written order to the business on WhatsApp. It is built with plain HTML, CSS and JavaScript, keeps every price in one file the owner can update, and is hosted on Cloudflare.</p>
-<p class="mono">HTML · CSS · JavaScript · Git and GitHub · Cloudflare</p><p class="mono">Role: designer and developer</p>
-<p style="margin-top:1rem"><a class="btn solid" href="https://twzee.foodss.workers.dev/" target="_blank" rel="noopener" data-cur="Open">Visit the live site</a></p></div>
-<div class="frame"><i><s></s><s></s><s></s></i><img src="assets/img/twzee-home.webp" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons" loading="lazy"></div></div>
+<article class="proj" id="twzee" aria-labelledby="twzee-h">
+<div class="card"><div>
+<p class="pn">03 · Client website</p>
+<h3 class="pt" id="twzee-h">Twzee Foods</h3>
+<p class="out">A live menu and WhatsApp ordering website for a Nigerian healthy-food business.</p>
+<ul class="tags" aria-label="Role and stack"><li class="role">Designer and developer</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Cloudflare</li></ul>
+<ul class="facts">
+<li>Visitors browse the full menu, pick sizes and extras, and send a ready-written order to the business on WhatsApp.</li>
+<li>Mobile-first, plain HTML, CSS and JavaScript. Every price lives in one file the owner can update.</li>
+<li>Hosted on Cloudflare, with opening hours and a live open or closed status.</li>
+</ul>
+<p class="links"><a class="btn solid" href="https://twzee.foodss.workers.dev/" target="_blank" rel="noopener">Visit the live site</a><a class="btn" href="https://github.com/Achimdi/twzee" target="_blank" rel="noopener">Code on GitHub</a></p>
+</div>
+<figure class="cvis"><a class="zoom" href="assets/img/twzee-home.webp"><img src="assets/img/twzee-home.webp" width="1200" height="567" loading="lazy" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons."></a><figcaption>Home page of the live site</figcaption></figure>
+</div>
+<details class="tech"><summary>Technical details</summary><div>
+<p class="mono">Stack: HTML, CSS, JavaScript, Git and GitHub, Cloudflare Workers (static assets).</p>
+</div></details>
 </article>
 </div></section>
 
@@ -223,22 +290,13 @@ $$('.mag').forEach(m=>{m.addEventListener('pointermove',e=>{if(RM||e.pointerType
 /* reveals */
 function count(c){const to=+c.dataset.to;if(RM||document.body.classList.contains('quick')){c.textContent=to.toFixed(2);return}const s=performance.now();(function f(n){const p=Math.min(1,(n-s)/1200);c.textContent=(to*(1-Math.pow(1-p,3))).toFixed(2);if(p<1)requestAnimationFrame(f)})(s)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{const on=e.isIntersecting;e.target.classList.toggle('in',on);if(on)e.target.querySelectorAll('.cnt').forEach(count)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-$$('h2,.sum,.cols>*,.lede>*,.big>*,.mono,.tabs,.chips,.tl,.car').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--dl',(i%4)*80+'ms');io.observe(el)});
+$$('h2,.sum,.cols>*,.lede>*,.big>*,.mono,.tabs,.chips,.tl').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--dl',(i%4)*80+'ms');io.observe(el)});
 const h1=$('h1');h1.setAttribute('aria-label','Chimdiume Azie');
 function fit(){h1.style.fontSize='';let s=parseFloat(getComputedStyle(h1).fontSize);while(h1.scrollWidth>h1.clientWidth+1&&s>18){s-=2;h1.style.fontSize=s+'px'}}
 fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
 /* theme */
 const th=$('#th'),setT=t=>{document.documentElement.dataset.theme=t;th.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('tm',t)}catch(e){}};let st;try{st=localStorage.getItem('tm')}catch(e){}
 setT(st||'light');th.onclick=()=>setT(document.documentElement.dataset.theme==='dark'?'light':'dark');
-/* carousels */
-$$('.car').forEach(c=>{const tr=c.querySelector('.ct'),sl=[...tr.children],dt=c.querySelector('.cd');let i=0,tm,sx=null;
-sl.forEach((_,k)=>{const b=document.createElement('button');b.setAttribute('aria-label','Slide '+(k+1));b.onclick=()=>{go(k);auto()};dt.append(b)});
-function go(k){i=(k+sl.length)%sl.length;tr.style.transform=`translateX(${-100*i}%)`;sl.forEach((s,j)=>s.classList.toggle('on',j===i));[...dt.children].forEach((b,j)=>b.classList.toggle('on',j===i))}
-function auto(){clearInterval(tm);if(!RM&&!document.body.classList.contains('quick'))tm=setInterval(()=>go(i+1),4200)}
-c.querySelector('.p').onclick=()=>{go(i-1);auto()};c.querySelector('.n').onclick=()=>{go(i+1);auto()};
-c.tabIndex=0;c.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(i-1);if(e.key==='ArrowRight')go(i+1)});
-c.addEventListener('pointerdown',e=>sx=e.clientX);c.addEventListener('pointerup',e=>{if(sx!==null&&Math.abs(e.clientX-sx)>40){go(i+(e.clientX<sx?1:-1));auto()}sx=null});
-c.addEventListener('pointerenter',()=>clearInterval(tm));c.addEventListener('pointerleave',auto);go(0);auto()});
 /* portrait */
 $('#por').onclick=()=>$('#por').classList.toggle('sw');
 /* lens */
@@ -256,4 +314,7 @@ const forced=mode==='deep'?'Deep mode: sent to Claude in the cloud.':d.r;rt.text
 const tx=document.createElement('div');a.append(rt,tx);log.append(u,a);let i=0;const s=setInterval(()=>{tx.textContent=d.a.slice(0,++i);if(i>=d.a.length)clearInterval(s)},RM?0:14)});
 /* skills */
 const tb=$('#tabs'),ch=$('#chips');Object.keys(D.skills).forEach((k,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=k;b.onclick=()=>{$$('#tabs button').forEach(z=>z.setAttribute('aria-selected',z===b));ch.innerHTML=D.skills[k].map(s=>`<span>${s}</span>`).join('');$('#depth').textContent=D.depth[k]};tb.append(b);if(!i)b.click()});
+/* click-to-enlarge (without JS the link just opens the image) */
+const lb=$('#lb');document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a.zoom');if(!a||!lb.showModal)return;e.preventDefault();const im=a.querySelector('img'),fc=a.closest('figure')?.querySelector('figcaption');$('#lbi').src=a.getAttribute('href');$('#lbi').alt=im?im.alt:'';$('#lbc').textContent=fc?fc.textContent:'';lb.showModal()});
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
 </script></body></html>
