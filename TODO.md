@@ -24,13 +24,7 @@ Nothing in this list appears on the page. Each item is either missing evidence, 
 
 ## Media
 
-- [ ] **Compress both videos.** `nellow.mp4` is 28.4 MB and `twzee.mp4` is 26.2 MB. Neither is fast-start: the index sits at the end of the file. Install ffmpeg (`winget install Gyan.FFmpeg`), then run these in `assets/videos`:
-  ```
-  ffmpeg -i nellow.mp4 -c:v libx264 -preset slow -crf 26 -maxrate 1.5M -bufsize 3M -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart nellow-web.mp4
-  ffmpeg -ss 2.5 -i twzee.mp4 -c:v libx264 -preset slow -crf 26 -maxrate 1.5M -bufsize 3M -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart twzee-web.mp4
-  ```
-  These keep the native resolution (1918×896 and 1912×914), so nothing gets upscaled. Expect at most about 15 MB for Nellow (75 s) and 10 MB for Twzee (48 s). Check that the new files play, then replace the originals with them under the same names.
-- [ ] **Trim the start of the Twzee video.** The first 2.5 seconds show Chrome's new-tab page, including your address-bar history and shortcut tiles. The `-ss 2.5` in the command above removes it. The poster already uses a frame from 4 seconds in.
+- [x] **Videos compressed** (H.264, native resolution, fast-start): `nellow.mp4` 28.4 → 4.3 MB, `twzee.mp4` 26.2 → 4.6 MB. The first 2.5 s of the Twzee video (Chrome new-tab page with address-bar history) was cut. Uncompressed originals are still in `Videos\Screen Recordings`.
 - [ ] **Higher-resolution Grad-CAM pair.** `mri-slice.webp` and `gradcam.webp` are only 336×408 and look soft on phones. This is the one Lighthouse warning left. Export both at 672×816 or larger with the same framing.
 - [ ] **Retake the Nellow workspace screenshot.** It comes from an earlier build whose mode picker included Fast mode, which was removed on 3 Nov. The caption only says "a mode selector", but a fresh screenshot would match the current code.
 
