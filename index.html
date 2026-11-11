@@ -53,16 +53,11 @@ h3{font:400 1.3rem var(--d);margin:2.2rem 0 .6rem}
 .big{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin:1.5rem 0}
 .big b{font:400 clamp(3rem,9vw,7rem)/.9 var(--d);letter-spacing:-.04em;display:block}
 .big .t b{color:var(--hot)}
-.ring{position:relative;width:min(100%,300px);aspect-ratio:1;margin:auto;perspective:700px;--rx:60deg;--ry:0deg}
-.ring i{position:absolute;inset:0;border-radius:50%;border:10px solid #8a949c;box-shadow:inset 0 0 18px #fff8,0 0 22px #0006;animation:spin 9s linear infinite;transform:rotateX(var(--rx)) rotateY(var(--ry))}
-.ring i:nth-child(2){inset:18%;border-color:var(--hot);animation-duration:6s;animation-direction:reverse}
-.ring i:nth-child(3){inset:34%;border-color:#14181c;animation-duration:4s}
-@keyframes spin{to{transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + 360deg))}}
 .demo{background:#0a0d11;color:#e9edf3;border-radius:8px;padding:1rem;min-height:330px;display:flex;flex-direction:column;gap:.7rem}
 .demo .top{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;font:.78rem var(--m);color:#9aa5b1}
 .demo .seg button{font:.8rem var(--m);background:none;border:1px solid #3a4450;color:#9aa5b1;padding:.3rem .8rem;cursor:pointer}
 .demo .seg button:first-child{border-radius:99px 0 0 99px}.demo .seg button:last-child{border-radius:0 99px 99px 0}
-.demo .seg [aria-pressed=true]{background:var(--hot);color:#0a0d11;border-color:var(--hot)}
+.demo .seg [aria-pressed=true]{background:#e9edf3;color:#0a0d11;border-color:#e9edf3}
 .demo .log{flex:1;font-size:.95rem;display:flex;flex-direction:column;gap:.6rem}
 .demo .u{align-self:flex-end;background:#1d2530;padding:.5rem .8rem;border-radius:10px 10px 2px 10px}
 .demo .a{max-width:90%}.demo .route{font:.75rem var(--m);color:var(--hot);margin-bottom:.2rem}
@@ -162,6 +157,18 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 .gc-ctl .seg [aria-pressed=true]{background:var(--ink);color:var(--paper)}
 .gc-size{font:.8rem var(--m);color:var(--mid);display:flex;align-items:center;gap:.5rem}.gc:not([data-v=lens]) .gc-size{visibility:hidden}
 @media(max-width:700px){.metrics td{white-space:normal}th,td{padding:.45rem .35rem}table{font-size:.88rem}}
+/* refresh: Nellow how it works */
+.how{margin-top:2.5rem}.how>h4{margin-top:0}.how .cols+.cols{margin-top:2rem}
+h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
+.dec{padding-left:1.1rem;display:grid;gap:.7rem}.dec li{max-width:62ch}
+.flow{width:100%;max-width:440px;height:auto;color:var(--ink);display:block}
+.flow .bx rect{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}.flow .bx rect.loop{fill:var(--panel);stroke-dasharray:4 3}
+.flow .ar path{fill:none;stroke:currentColor;stroke-width:1.4;marker-end:url(#ah)}.flow .ar .hot{stroke:var(--hot)}
+.flow text{fill:var(--ink);font:12.5px var(--b);text-anchor:middle}.flow .tb{font-weight:600}
+.flow .tm{fill:var(--mid);font-size:11.5px}.flow .mo{font:11.5px var(--m)}
+.flow .tl{text-anchor:start;font:11px var(--m)}.flow .hl{fill:var(--hot)}
+.demo{min-height:0}.demo .route{color:#ffb4a8}.demo .hint{color:#9aa5b1;font-size:.9rem}
+.demo .seg button,.demo .ask button{min-height:44px}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
@@ -191,9 +198,75 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 </div>
 <figure class="cvis"><a class="zoom" href="assets/img/nellow-workspace.webp"><img src="assets/img/nellow-workspace.webp" width="1200" height="558" loading="lazy" alt="Nellow workspace: chat history and projects on the left, suggested prompts in the middle, and a mode picker next to the message box."></a><figcaption>Workspace with chat history, projects and the mode picker. This screenshot is from an earlier build that still had a Fast mode.</figcaption></figure>
 </div>
-<div class="cols"><div><div class="ring" id="ring" aria-hidden="true"><i></i><i></i><i></i></div><p class="mono" style="text-align:center;margin-top:1rem">Move over the ring. Nellow's own interface is metallic black and silver with one yellow accent.</p></div>
-<div><div class="demo" id="demo"><div class="top"><span>Demo recreation, scripted. Not a live model.</span><span class="seg" role="group" aria-label="Mode"><button aria-pressed="true" data-m="fast">Fast</button><button aria-pressed="false" data-m="deep">Deep</button></span></div>
-<div class="log" id="log" aria-live="polite"></div><div class="ask"><button data-q="0">What is an API?</button><button data-q="1">Compare two ways to host an agent</button></div></div></div></div>
+<div class="how">
+<h4>How it works</h4>
+<div class="cols">
+<figure class="diagram">
+<svg class="flow" viewBox="0 0 360 450" role="img" aria-labelledby="nf-t nf-d">
+<title id="nf-t">How Nellow answers a message</title>
+<desc id="nf-d">The message and the chosen mode go either to Balanced mode on the device or to Turbo or Thorough mode in the cloud. In Balanced mode a small Llama model first decides SEARCH or CHAT; CHAT answers directly. SEARCH, or the cloud model's own tool calls, enter a tool loop of up to six rounds with web search, news search and a page reader, whose results go back to the model. The answer streams back with the de-duplicated source links, which are saved with the message.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g class="bx">
+<rect x="70" y="8" width="220" height="40" rx="8"/>
+<rect x="8" y="88" width="166" height="70" rx="8"/>
+<rect x="186" y="88" width="166" height="70" rx="8"/>
+<rect class="loop" x="44" y="214" width="308" height="122" rx="8"/>
+<rect x="54" y="248" width="90" height="52" rx="6"/><rect x="153" y="248" width="90" height="52" rx="6"/><rect x="252" y="248" width="90" height="52" rx="6"/>
+<rect x="8" y="376" width="344" height="66" rx="8"/>
+</g>
+<g class="ar">
+<path d="M150 48L104 86"/><path d="M210 48L256 86"/>
+<path d="M24 158V374"/>
+<path class="hot" d="M110 158V212"/><path class="hot" d="M269 158V212"/>
+<path d="M198 336V374"/>
+</g>
+<text class="tb" x="180" y="33">Your message + chosen mode</text>
+<text class="tb" x="91" y="111">Balanced · on device</text><text class="tm" x="91" y="130">Router: llama3.2:3b</text><text class="tm" x="91" y="147">SEARCH or CHAT?</text>
+<text class="tb" x="269" y="111">Turbo, Thorough · cloud</text><text class="tm" x="269" y="130">gpt-oss-120b on Groq</text><text class="tm" x="269" y="147">picks its own tools</text>
+<text class="tl" x="30" y="196">CHAT</text><text class="tl hl" x="116" y="196">SEARCH</text><text class="tl hl" x="275" y="196">tool calls</text>
+<text class="tb" x="198" y="236">Tool loop · up to 6 rounds</text>
+<text class="mo" x="99" y="271">web_search</text><text class="tm" x="99" y="289">top 4 results</text>
+<text class="mo" x="198" y="271">news_search</text><text class="tm" x="198" y="289">past week</text>
+<text class="mo" x="297" y="271">read_page</text><text class="tm" x="297" y="289">page text</text>
+<text class="tm" x="198" y="324">results go back to the model</text>
+<text class="tb" x="180" y="402">Answer, streamed</text><text class="tm" x="180" y="424">+ de-duplicated source links, saved with it</text>
+</svg>
+<figcaption>Simplified from app.py and server.py in the repo. Questions with an image go to gemma3:4b on the device instead.</figcaption>
+</figure>
+<div>
+<h5>Design decisions</h5>
+<ul class="dec">
+<li><b>Two places to run, chosen by the user.</b> Balanced keeps everything on the device with a 3B Llama model, so it is private and costs nothing per request. Turbo sends the question to gpt-oss-120b on Groq for harder questions. Nellow does not switch between them on its own.</li>
+<li><b>A one-word router before any search.</b> In Balanced mode the small model first answers SEARCH or CHAT (temperature 0, at most 4 tokens), and it also sees the last two user messages, so a follow-up like "what about X?" still searches. Only SEARCH switches the tools on, so greetings and coding questions skip the web.</li>
+<li><b>Sources come from the tools, not the model.</b> Every URL a search returns is collected in code, de-duplicated and saved with the answer. The system prompt tells the model to state only what the sources say and to say so when they conflict.</li>
+<li><b>Failures become text the model can read.</b> A failed search or an unreadable page returns a short message instead of an error. Unknown tools and invented arguments are dropped, and a tool call the small model writes as plain JSON is detected and run. After 6 rounds the loop stops with "I got stuck" instead of spinning.</li>
+<li><b>Bounded pages and a cloud fallback.</b> Page text is extracted with trafilatura and cut to 1,500 characters for the top search hit, 6,000 for a full page read and 2,500 per tool result on the cloud path. On Groq, a rate limit or an oversized request falls back to gpt-oss-20b, a malformed tool call retries once without tools, and after three tool rounds the model is told to answer from what it has.</li>
+</ul>
+</div>
+</div>
+<div class="cols">
+<div>
+<h5>Limits and what I would improve</h5>
+<ul class="dec">
+<li>No evaluation yet. I have not measured latency, routing accuracy or whether answers match their sources. Next: a small fixed question set with expected routes and checked citations. <span class="todo">[TODO: latency per mode, example queries, any test set]</span></li>
+<li>The source list shows every link that was fetched, not only the ones the answer used. Per-claim citations would be more honest.</li>
+<li>One reply at a time: a global lock serialises requests. That is fine for a few users but will not scale; a job queue would.</li>
+<li>Rate limits live in memory and reset on restart, and storage is one SQLite file.</li>
+<li>Search goes through a third-party DuckDuckGo library (ddgs) with no caching, and only the top hit is read in full unless the model asks for more.</li>
+</ul>
+</div>
+<div>
+<h5>Try the simulation</h5>
+<div class="demo" id="demo" hidden><div class="top"><span>Scripted simulation. No model or search runs on this page.</span><span class="seg" role="group" aria-label="Mode"><button type="button" aria-pressed="true" data-m="bal">Balanced</button><button type="button" aria-pressed="false" data-m="tur">Turbo</button></span></div>
+<div class="log" id="log" aria-live="polite"><p class="hint">Pick a question to see the route Nellow would take.</p></div>
+<div class="ask"><button type="button" data-q="0">What is an API?</button><button type="button" data-q="1">Compare two ways to host an agent</button><button type="button" data-q="2">What's in the tech news this week?</button></div></div>
+<noscript><p class="mono">The scripted simulation needs JavaScript.</p></noscript>
+<h5>See the real thing</h5>
+<p><span class="todo">[TODO: link to a 60–90 s screen recording of Nellow answering a search question]</span></p>
+<p>Run it yourself: the code is on <a href="https://github.com/Achimdi/nellow" target="_blank" rel="noopener">GitHub</a>. <span class="todo">[TODO: the repo has no README yet. Add setup steps (Ollama models, Groq key, uvicorn app:app) and link them here]</span></p>
+</div>
+</div>
+</div>
 <details class="tech"><summary>Technical details</summary><div>
 <table><caption>Modes and models</caption><thead><tr><th scope="col">Mode</th><th scope="col">Runs</th><th scope="col">Model</th></tr></thead><tbody>
 <tr><td>Balanced</td><td>On device</td><td>llama3.2:3b through Ollama, with a search router</td></tr>
@@ -310,7 +383,10 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 const D={email:'chimdiazie2022@gmail.com',
 skills:{'Machine learning':['PyTorch','transfer learning','CNNs','Grad-CAM','explainable AI','scikit-learn','OpenCV','NumPy','Pandas','precision, recall, F1','confusion matrix','ROC','class imbalance','local LLMs beside cloud models'],'Web and backend':['HTML','CSS','JavaScript','Flask','REST APIs','JWT authentication','SQLite','SQLAlchemy'],'Mobile':['Flutter'],'Tools':['Python','Git and GitHub','VS Code']},
 depth:{'Machine learning':'Used end to end in the final-year project.','Web and backend':'Built the full hospital app myself.','Mobile':'Working knowledge only.','Tools':'Daily drivers.'},
-demo:[{f:1,r:'Routed to Llama on this machine: a short question needs little reasoning, so it stays local and costs nothing per request.',a:'An API is a set of agreed requests a program can make to another program, such as asking a weather service for tomorrow\'s forecast and getting data back.'},{f:0,r:'Escalated to Claude in the cloud: a multi-step comparison needs deeper reasoning than a quick local answer.',a:'Local hosting is cheaper and private but limited by your hardware. Cloud hosting scales and stays online but costs per use. A hybrid keeps routine work local and escalates only hard problems.'}]};
+demo:[
+{bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'An API is a set of agreed requests one program can make to another, such as asking a weather service for tomorrow\'s forecast and getting data back.'},
+{bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'Local hosting is cheaper and private but limited by your hardware. Cloud hosting scales and stays online but costs per use. A hybrid keeps routine work local and sends only hard problems to the cloud.'},
+{bal:['Router (llama3.2:3b): SEARCH','news_search("tech news this week")','read_page(top result)'],tur:['gpt-oss-120b calls news_search("tech news this week")','gpt-oss-120b calls read_page(top result)'],a:'In the real app the answer is written from the articles it just fetched, with their links listed underneath. This simulation does not search, so there is no answer to show here.'}]};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1800)};
 const copy=()=>{navigator.clipboard?.writeText(D.email).then(()=>toast('Email copied'),()=>toast(D.email))};$('#cp').onclick=$('#mail').onclick=copy;
@@ -358,12 +434,11 @@ L.addEventListener('pointermove',lens);L.addEventListener('pointerdown',lens);
 L.addEventListener('keydown',e=>{const k={ArrowLeft:[-5,0],ArrowRight:[5,0],ArrowUp:[0,-5],ArrowDown:[0,5]}[e.key];if(!k||!gc.classList.contains('live'))return;e.preventDefault();const g=a=>parseFloat(getComputedStyle(L).getPropertyValue(a));L.style.setProperty('--x',Math.min(100,Math.max(0,g('--x')+k[0]))+'%');L.style.setProperty('--y',Math.min(100,Math.max(0,g('--y')+k[1]))+'%')});
 $('#lr').oninput=e=>L.style.setProperty('--r',e.target.value+'px');
 $$('.gc-ctl .seg button').forEach(b=>b.onclick=()=>{gc.dataset.v=b.dataset.v;$$('.gc-ctl .seg button').forEach(z=>z.setAttribute('aria-pressed',z===b))});
-/* nellow ring + demo */
-const R=$('#ring');R.parentElement.addEventListener('pointermove',e=>{const r=R.getBoundingClientRect();R.style.setProperty('--rx',(60+((e.clientY-r.top)/r.height-.5)*50)+'deg');R.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*60)+'deg')});
-let mode='fast';$$('.demo .seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.demo .seg button').forEach(z=>z.setAttribute('aria-pressed',z===b))});
-const log=$('#log');$$('.demo .ask button').forEach(b=>b.onclick=()=>{const d=D.demo[b.dataset.q],deep=!d.f;log.innerHTML='';const u=document.createElement('div');u.className='u';u.textContent=b.textContent;const a=document.createElement('div');a.className='a';const rt=document.createElement('div');rt.className='route';
-const forced=mode==='deep'?'Deep mode: sent to Claude in the cloud.':d.r;rt.textContent=(mode==='fast'&&deep?'Fast mode tried Llama locally, then escalated. ':'')+forced;
-const tx=document.createElement('div');a.append(rt,tx);log.append(u,a);let i=0;const s=setInterval(()=>{tx.textContent=d.a.slice(0,++i);if(i>=d.a.length)clearInterval(s)},RM?0:14)});
+/* Nellow scripted simulation (no model runs here) */
+const demo=$('#demo');demo.hidden=false;let mode='bal';$$('.demo .seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.demo .seg button').forEach(z=>z.setAttribute('aria-pressed',z===b))});
+const log=$('#log');let typing;$$('.demo .ask button').forEach(b=>b.onclick=()=>{clearInterval(typing);const d=D.demo[b.dataset.q];log.innerHTML='';const u=document.createElement('div');u.className='u';u.textContent=b.textContent;const a=document.createElement('div');a.className='a';
+d[mode].forEach(t=>{const r=document.createElement('div');r.className='route';r.textContent='→ '+t;a.append(r)});
+const tx=document.createElement('div');a.append(tx);log.append(u,a);if(RM||document.body.classList.contains('quick')){tx.textContent=d.a;return}let i=0;typing=setInterval(()=>{tx.textContent=d.a.slice(0,++i);if(i>=d.a.length)clearInterval(typing)},14)});
 /* skills */
 const tb=$('#tabs'),ch=$('#chips');Object.keys(D.skills).forEach((k,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=k;b.onclick=()=>{$$('#tabs button').forEach(z=>z.setAttribute('aria-selected',z===b));ch.innerHTML=D.skills[k].map(s=>`<span>${s}</span>`).join('');$('#depth').textContent=D.depth[k]};tb.append(b);if(!i)b.click()});
 /* click-to-enlarge (without JS the link just opens the image) */
