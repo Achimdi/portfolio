@@ -30,9 +30,6 @@ h3{font:400 1.3rem var(--d);margin:2.2rem 0 .6rem}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem);align-items:start}
 .cols>div>p+p{margin-top:1rem}
 .mono{font:.8rem var(--m);color:var(--mid)}
-.por{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;background:var(--panel);cursor:pointer}
-.por img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s}
-.por img+img{opacity:0}.por:hover img+img,.por.sw img+img{opacity:1}
 .demo{background:#0a0d11;color:#e9edf3;border-radius:8px;padding:1rem;min-height:330px;display:flex;flex-direction:column;gap:.7rem}
 .demo .top{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;font:.78rem var(--m);color:#9aa5b1}
 .demo .seg button{font:.8rem var(--m);background:none;border:1px solid #3a4450;color:#9aa5b1;padding:.3rem .8rem;cursor:pointer}
@@ -51,7 +48,7 @@ body.quick #heat{display:none}body.quick *{animation:none!important;transition:n
 body{transition:background .4s,color .4s}[data-theme=dark]{--paper:#0e0e0f;--ink:#ecebe6;--mid:#9a9992;--line:#2a2a2b;--panel:#18181a}
 img{height:auto}.wrap,.cols>*,.lede>*{min-width:0}.mono{overflow-wrap:anywhere}
 h1{font:400 clamp(2rem,9.2vw,7.4rem)/1.04 var(--d);letter-spacing:-.025em;white-space:nowrap;position:relative;z-index:2}
-h2{font-size:clamp(1.8rem,5vw,3.6rem)}.mail{font-size:clamp(1rem,4.2vw,2.6rem)}.lede p{font-size:clamp(1.05rem,2vw,1.45rem)}
+h2{font-size:clamp(1.8rem,5vw,3.6rem)}.mail{font-size:clamp(1.35rem,5vw,2.6rem)}.lede p{font-size:clamp(1.05rem,2vw,1.45rem)}
 [data-theme=dark] #heat{mix-blend-mode:screen}
 #hero:before{content:"";position:absolute;inset:0;background:radial-gradient(var(--line) 1px,#0000 1.4px) 0 0/26px 26px}
 .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;animation:fl 14s ease-in-out infinite alternate;pointer-events:none}
@@ -141,17 +138,23 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 .tipw{position:relative;display:inline-block}
 .tipw [role=tooltip]{position:absolute;top:calc(100% + .5rem);right:0;width:max-content;max-width:15rem;background:var(--ink);color:var(--paper);font:.78rem/1.4 var(--b);padding:.45rem .7rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:60}
 .tipw:hover [role=tooltip],.tipw:focus-within [role=tooltip]{opacity:1}.tipw.x [role=tooltip]{opacity:0}
+/* refresh: about and contact */
+.ab{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,5rem);align-items:start}.ab p{max-width:62ch}.ab p+p{margin-top:1rem}
+.por{max-width:300px}.por img{width:100%;height:auto;aspect-ratio:680/780;object-fit:cover;border-radius:6px;background:var(--panel)}
+.lede small+small{margin-top:.3rem}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:1.2rem 0 .4rem}.mail{text-decoration:none}.mail:hover{text-decoration:underline}
+@media(max-width:800px){.ab{grid-template-columns:1fr}.por{max-width:220px}}
 </style></head><body>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
-<a href="CV.pdf" download>CV</a><a class="em" href="mailto:chimdiazie2022@gmail.com">Email</a><a href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a>
+<a href="CV.pdf" download>CV</a><a class="em" id="nav-mail" href="#contact">Email</a><a href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a>
 <span class="tipw"><button id="qv" aria-pressed="false" aria-describedby="qv-tip">Quick view</button><span role="tooltip" id="qv-tip">Turns off the heat trail and all animations</span></span><button id="th" aria-label="Switch between light and dark">Dark</button></nav>
 <div id="toast" role="status"></div>
 <dialog id="lb" aria-label="Enlarged image"><form method="dialog"><button class="btn">Close</button></form><img id="lbi" src="data:," alt=""><p id="lbc"></p></dialog>
 <main id="top">
 <header id="hero"><canvas id="heat" aria-hidden="true"></canvas><div class="wrap">
 <h1>Chimdiume<br><em>Azie</em></h1>
-<div class="lede"><div><p>I build AI that shows its work: brain-scan classification you can inspect, and an agent that runs on my own machine.</p><small>AI/ML developer · B.Sc. Computer Science, Godfrey Okoye University, 2026 · Nigeria · open to entry-level AI/ML and software engineering roles, remote work or relocation</small></div>
-<div class="row"><a class="btn solid" href="CV.pdf" download>Download CV</a><button class="btn" id="cp">Copy email</button><a class="btn" href="#work">See the work</a></div></div><ul class="tags hero-tags" aria-label="Focus areas"><li>Explainable AI</li><li>Grad-CAM</li><li>PyTorch</li><li>LLM agents</li><li>Tool calling</li><li>FastAPI</li><li>Flask</li></ul></div></header>
+<div class="lede"><div><p>I build AI that shows its work: brain-scan classification you can inspect, and an agent that runs on my own machine.</p><small>AI/ML developer · B.Sc. Computer Science, Godfrey Okoye University, 2026 · Nigeria · open to entry-level AI/ML and software engineering roles, remote work or relocation</small><small>West Africa Time (UTC+1). <span class="todo">[TODO: confirm availability, e.g. overlap hours with Europe or US time zones]</span></small></div>
+<div class="row"><a class="btn solid" href="CV.pdf" download>Download CV</a><a class="btn" id="cp" href="#contact">Contact</a><a class="btn" href="#work">See the work</a></div></div><ul class="tags hero-tags" aria-label="Focus areas"><li>Explainable AI</li><li>Grad-CAM</li><li>PyTorch</li><li>LLM agents</li><li>Tool calling</li><li>FastAPI</li><li>Flask</li></ul></div></header>
 
 <section id="work" aria-labelledby="work-h"><div class="wrap"><h2 id="work-h">Selected work</h2>
 <article class="proj" id="nellow" aria-labelledby="nellow-h">
@@ -355,23 +358,34 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 <div><h3>Web and tooling</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Mobile-first responsive design</li><li>Git and GitHub</li><li>Cloudflare Workers</li><li>GitHub Pages</li></ul><p class="ev">Shown in: Twzee Foods, Nellow, this site</p></div>
 </div></div></section>
 
-<section id="about"><div class="wrap cols"><div><h2>About</h2>
-<p>I just graduated in Computer Science and spent my final year on one question: when a model says a brain scan looks like early Alzheimer's, can a doctor see why?</p>
-<p>So I built the classifier, the explanation layer and the hospital app around them, and made it work on a laptop with no GPU. I report the weak results next to the strong ones, and I fix what I find.</p>
+<section id="about" aria-labelledby="about-h"><div class="wrap ab"><div><h2 id="about-h">About</h2>
+<p>I just graduated in Computer Science and spent my final year on one question: when a model says a brain scan looks like early Alzheimer's, can a doctor see why? So I built the classifier, the explanation layer and the hospital app around them, and made it work on a laptop with no GPU.</p>
+<p><b>Working style.</b> I report weak results next to strong ones, and I fix what I find. I build end to end, from the model to the app and data around it. <span class="todo">[TODO: confirm, and add one sentence on how you work with a remote team]</span></p>
 <p class="mono">Education: B.Sc. Computer Science, Godfrey Okoye University, 2026. Thesis: <span class="todo">[TODO: thesis title]</span></p></div>
-<div class="por" id="por" role="img" aria-label="Portrait of Chimdiume Azie. Hover or tap to swap photos."><img src="assets/img/portrait-1.webp" alt=""><img src="assets/img/portrait-2.webp" alt=""></div></div></section>
+<!-- HEADSHOT: replace assets/img/portrait-1.webp with a professional headshot (4:5, about 680x850) and keep width/height in step. -->
+<figure class="por"><img src="assets/img/portrait-1.webp" width="680" height="780" loading="lazy" alt="Portrait of Chimdiume Azie in a white shirt."><figcaption><span class="todo">[TODO: optional professional headshot, or keep this photo]</span></figcaption></figure>
+</div></section>
 
-<section id="contact"><div class="wrap"><h2>Say hello</h2><p>Looking for an entry-level AI/ML or software engineering role. Based in Nigeria, open to remote work, and willing to relocate for the right opportunity.</p><button class="mail" id="mail">chimdiazie2022@gmail.com</button><div class="row" style="justify-content:flex-start;margin-top:1.5rem"><a class="btn solid" href="CV.pdf" download>Download CV</a><a class="btn" href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a></div></div></section>
+<section id="contact" aria-labelledby="contact-h"><div class="wrap"><h2 id="contact-h">Say hello</h2>
+<p>Looking for an entry-level AI/ML or software engineering role. Based in Nigeria, open to remote work, and willing to relocate for the right opportunity.</p>
+<p class="mono">West Africa Time (UTC+1). <span class="todo">[TODO: confirm availability, e.g. overlap hours with Europe or US time zones]</span></p>
+<!-- EMAIL: the only place the address lives. Change the href and the text on the next line; the nav link and both Copy buttons read it from here. -->
+<p class="mailrow"><a class="mail" id="mail" href="mailto:chimdiazie2022@gmail.com">chimdiazie2022@gmail.com</a> <button class="btn" id="cp2" type="button" hidden>Copy</button></p>
+<p><span class="todo">[TODO: switch to a more professional address if you have one]</span></p>
+<div class="row" style="justify-content:flex-start;margin-top:1.5rem"><a class="btn solid" href="CV.pdf" download>Download CV</a><a class="btn" href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></section>
 </main>
 <script>
-const D={email:'chimdiazie2022@gmail.com',
+const D={
 demo:[
 {bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'An API is a set of agreed requests one program can make to another, such as asking a weather service for tomorrow\'s forecast and getting data back.'},
 {bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'Local hosting is cheaper and private but limited by your hardware. Cloud hosting scales and stays online but costs per use. A hybrid keeps routine work local and sends only hard problems to the cloud.'},
 {bal:['Router (llama3.2:3b): SEARCH','news_search("tech news this week")','read_page(top result)'],tur:['gpt-oss-120b calls news_search("tech news this week")','gpt-oss-120b calls read_page(top result)'],a:'In the real app the answer is written from the articles it just fetched, with their links listed underneath. This simulation does not search, so there is no answer to show here.'}]};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1800)};
-const copy=()=>{navigator.clipboard?.writeText(D.email).then(()=>toast('Email copied'),()=>toast(D.email))};$('#cp').onclick=$('#mail').onclick=copy;
+const EMAIL=$('#mail').textContent.trim();$('#nav-mail').href='mailto:'+EMAIL;
+const copy=e=>{e.preventDefault();(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(()=>toast('Copied '+EMAIL),()=>toast(EMAIL))};
+$('#cp').textContent='Copy email';$('#cp').onclick=copy;$('#cp2').hidden=false;$('#cp2').onclick=copy;
 /* quick view */
 $('#qv').onclick=e=>{const on=document.body.classList.toggle('quick');e.target.setAttribute('aria-pressed',on)};
 const tw=$('.tipw');addEventListener('keydown',e=>{if(e.key==='Escape')tw.classList.add('x')});tw.addEventListener('pointerleave',()=>tw.classList.remove('x'));tw.addEventListener('focusout',()=>tw.classList.remove('x'));
@@ -394,8 +408,6 @@ fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(f
 /* theme */
 const th=$('#th'),setT=t=>{document.documentElement.dataset.theme=t;th.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('tm',t)}catch(e){}};let st;try{st=localStorage.getItem('tm')}catch(e){}
 setT(st||'light');th.onclick=()=>setT(document.documentElement.dataset.theme==='dark'?'light':'dark');
-/* portrait */
-$('#por').onclick=()=>$('#por').classList.toggle('sw');
 /* Grad-CAM lens: static side-by-side without JS or with reduced motion */
 const gc=$('#gc'),L=$('#lens');if(!RM){gc.classList.add('live');gc.dataset.v='lens';$('.gc-ctl').hidden=false;L.tabIndex=0;L.setAttribute('role','img')}
 function lens(e){const r=L.getBoundingClientRect();L.style.setProperty('--x',((e.clientX-r.left)/r.width*100)+'%');L.style.setProperty('--y',((e.clientY-r.top)/r.height*100)+'%')}
