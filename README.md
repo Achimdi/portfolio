@@ -12,7 +12,7 @@ Live site: https://achimdi.github.io/portfolio/
 | Styling | CSS3: custom properties, Grid, Flexbox, `clamp()` fluid sizing, media queries |
 | Behaviour | Vanilla JavaScript (ES6+), no libraries |
 | Fonts | Google Fonts: Syne (headings), Instrument Sans (body), Fragment Mono (labels) |
-| Images | WebP, embedded in the HTML as base64 data URIs |
+| Images | WebP files in `assets/img/` |
 | Hosting | GitHub Pages |
 
 **Not used:** TypeScript, React, GSAP, Lenis, Three.js or any other package. Everything below is plain browser features.
@@ -47,7 +47,8 @@ Live site: https://achimdi.github.io/portfolio/
 
 ## Files
 
-- `index.html`: the whole site (HTML, CSS, JavaScript and images)
+- `index.html`: the whole site (HTML, CSS and JavaScript)
+- `assets/img/`: the images
 - `CV.pdf`: the CV behind the Download CV buttons; keep it in the same folder as `index.html`
 - `README.md`: this file
 
@@ -56,12 +57,12 @@ Live site: https://achimdi.github.io/portfolio/
 - Text, links and the email address are plain text inside `index.html`. Open it in VS Code and search for what you want to change.
 - The skills tabs and the demo chat answers are in the `D` object at the top of the `<script>`.
 - Colours and fonts are CSS variables at the top of the `<style>` block (`:root` for light, `[data-theme=dark]` for dark).
-- Images are embedded as `data:image/webp;base64,...`, so to swap one, convert the new image to WebP and replace that data string.
+- Images live in `assets/img/`. To swap one, convert the new image to WebP, keep the file name (or update the `src`), and update the `width` and `height` attributes on its `<img>` tag.
 - To update the CV, replace `CV.pdf` and keep the same file name.
 
 ## Deploying
 
-1. Put `index.html` and `CV.pdf` in the repo https://github.com/Achimdi/portfolio.
+1. Put `index.html`, `CV.pdf` and the `assets/` folder in the repo https://github.com/Achimdi/portfolio.
 2. In GitHub, go to Settings, then Pages, choose "Deploy from a branch", pick `main` and `/ (root)`, and Save.
 3. The site goes live at https://achimdi.github.io/portfolio/ after a minute or two.
 
