@@ -391,11 +391,11 @@ h3 { font-size: 1.375rem; line-height: 1.3; letter-spacing: -0.01em; font-weight
 .footer { position: relative; padding: var(--s4) 0; color: var(--muted); font-size: 0.9375rem; }
 .footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--hairline); }
 
-/* ---------- Performance: skip layout and paint of off-screen blocks until they come near ---------- */
-.project, #skills .wrap, #about .wrap, #contact .wrap { content-visibility: auto; contain-intrinsic-size: auto 720px; }
-
 /* ---------- Motion (all of it is skipped when reduced motion is requested) ---------- */
 @media (prefers-reduced-motion: no-preference) {
+  /* nav links and buttons glide to their section instead of jumping */
+  html { scroll-behavior: smooth; }
+
   /* hero rises in on load */
   @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @keyframes portrait-in { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
