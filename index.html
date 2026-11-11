@@ -62,11 +62,6 @@ h3{font:400 1.3rem var(--d);margin:2.2rem 0 .6rem}
 .demo .u{align-self:flex-end;background:#1d2530;padding:.5rem .8rem;border-radius:10px 10px 2px 10px}
 .demo .a{max-width:90%}.demo .route{font:.75rem var(--m);color:var(--hot);margin-bottom:.2rem}
 .demo .ask{display:flex;gap:.5rem;flex-wrap:wrap}.demo .ask button{font:.82rem var(--b);background:#161d26;border:1px solid #2c3641;color:#e9edf3;border-radius:6px;padding:.4rem .7rem;cursor:pointer}
-.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
-.tabs button{font:400 clamp(1rem,2.4vw,1.6rem) var(--d);border:0;background:none;color:var(--mid);cursor:pointer;padding:.2rem .6rem;border-bottom:3px solid transparent}
-.tabs [aria-selected=true]{color:var(--ink);border-color:var(--hot)}
-.chips{display:flex;gap:.5rem;flex-wrap:wrap;min-height:5rem}
-.chips span{font:.85rem var(--m);border:1px solid var(--ink);padding:.35rem .7rem;border-radius:99px;transition:background .2s}.chips span:hover{background:var(--warm)}
 .tl{list-style:none;padding:0;border-left:2px solid var(--ink)}.tl li{padding:0 0 1.4rem 1.4rem;position:relative}.tl li:before{content:"";position:absolute;left:-7px;top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--hot)}
 .mail{font:400 clamp(1.4rem,6.2vw,5.4rem)/1 var(--d);letter-spacing:-.03em;background:none;border:0;cursor:pointer;color:var(--ink);text-align:left;word-break:break-all}.mail:hover{color:var(--hot)}
 #cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--ink);border-radius:50%;z-index:90;pointer-events:none;display:none;place-items:center;font:.62rem var(--m);transition:width .2s,height .2s,margin .2s,background .2s;mix-blend-mode:difference;border-color:#fff;color:#fff}
@@ -101,10 +96,9 @@ h2{font-size:clamp(1.8rem,5vw,3.6rem)}.big b{font-size:clamp(2.2rem,7vw,4.6rem)}
 .rv.in,.cols>:nth-child(n).rv.in{opacity:1;transform:none}body.quick .rv{opacity:1!important;transform:none!important}
 @media(max-width:900px){.cols,.lede,.big{grid-template-columns:1fr}.row{justify-content:flex-start}.cols>:nth-child(n).rv{transform:translateY(40px)}}
 @media(max-width:700px){nav{gap:.3rem;padding:.55rem .8rem}nav .brand,nav .em{display:none}nav a,nav button{font-size:.72rem;padding:.35rem .65rem}#hero{padding-top:5rem}section{padding:3.5rem 0}.lede small{font-size:.72rem}}
-.chips{align-content:flex-start;align-items:flex-start}.chips span{line-height:1.3;white-space:nowrap;padding:.4rem .85rem}
 .big{container-type:inline-size}.big>*{min-width:0}.big b{white-space:nowrap;font-size:clamp(1.6rem,3.2vw,3rem);font-size:min(4.2rem,7.2cqw)}@media(max-width:900px){.big b{font-size:clamp(2.2rem,13cqw,4rem)}}
 h1{font-size:clamp(2.8rem,12vw,9rem);letter-spacing:-.02em;line-height:1}h1 em{font-style:italic}
-h2{font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.01em;line-height:1}h3{font-size:1.6rem}.tabs button{font-size:clamp(1.3rem,3vw,2rem)}nav .brand{font-size:1.25rem}
+h2{font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.01em;line-height:1}h3{font-size:1.6rem}nav .brand{font-size:1.25rem}
 #hero:before{opacity:.45}.lens{touch-action:pan-y;cursor:crosshair;width:min(100%,300px)}
 .mq{padding:.85rem 0;border-block:1px solid var(--line);background:var(--paper)}.mq>div{display:flex;align-items:center;gap:1.4rem;width:max-content;animation:mq 50s linear infinite;font:400 .78rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--mid);white-space:nowrap}.mq i{display:block;width:4px;height:4px;border-radius:50%;background:var(--hot)}
 /* refresh: structure */
@@ -175,6 +169,12 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .slot{aspect-ratio:1200/567;border:1px dashed var(--mid);border-radius:6px;display:grid;place-items:center;padding:.8rem;text-align:center;font-size:.85rem}
 @media(max-width:700px){.pbr{grid-template-columns:1fr;gap:.2rem}.pbr dd{margin-bottom:.6rem}.pair{grid-template-columns:1fr}}
+/* refresh: skills */
+.lead{color:var(--mid);margin:-1rem 0 2rem}
+.sk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(1.5rem,4vw,3.5rem)}
+.sk h3{font:400 1.6rem var(--d);margin:0 0 .8rem}.sk .tags{margin-bottom:.6rem}.sk .tags li{font-size:.8rem;border-color:var(--mid)}
+.ev{font:.78rem var(--m);color:var(--mid)}
+@media(max-width:800px){.sk{grid-template-columns:1fr}}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
@@ -381,7 +381,14 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 </article>
 </div></section>
 
-<section id="skills"><div class="wrap"><h2>What I work with</h2><div class="tabs" role="tablist" id="tabs"></div><div class="chips" id="chips" role="tabpanel" aria-live="polite"></div><p class="mono" id="depth"></p></div></section>
+<section id="skills" aria-labelledby="skills-h"><div class="wrap"><h2 id="skills-h">Skills</h2>
+<p class="lead">Only what the three projects above show.</p>
+<div class="sk">
+<div><h3>ML and AI</h3><ul class="tags"><li>PyTorch</li><li>Transfer learning (EfficientNet-B0, timm)</li><li>CNN image classification</li><li>Grad-CAM</li><li>Class imbalance (weighted loss)</li><li>Per-class evaluation: recall, F1, confusion matrix, ROC</li><li>scikit-learn</li><li>OpenCV</li><li>NumPy</li><li>Pandas</li><li>Matplotlib, Seaborn</li></ul><p class="ev">Shown in: NeuroScan AI</p></div>
+<div><h3>LLM applications</h3><ul class="tags"><li>Tool calling</li><li>Query routing with a small model</li><li>Local models with Ollama</li><li>Groq API</li><li>Streaming responses</li><li>Citations from tool results</li><li>System and router prompts</li><li>Fallbacks on rate limits and bad tool calls</li></ul><p class="ev">Shown in: Nellow</p></div>
+<div><h3>Backend and data</h3><ul class="tags"><li>Python</li><li>FastAPI</li><li>Flask</li><li>REST APIs</li><li>JWT and token auth</li><li>Role-based access</li><li>Password hashing (scrypt)</li><li>Rate limiting</li><li>SQLite</li><li>SQLAlchemy</li></ul><p class="ev">Shown in: NeuroScan AI, Nellow</p></div>
+<div><h3>Web and tooling</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Mobile-first responsive design</li><li>Git and GitHub</li><li>Cloudflare Workers</li><li>GitHub Pages</li></ul><p class="ev">Shown in: Twzee Foods, Nellow, this site</p></div>
+</div></div></section>
 
 <section id="about"><div class="wrap cols"><div><h2>About</h2>
 <p>I just graduated in Computer Science and spent my final year on one question: when a model says a brain scan looks like early Alzheimer's, can a doctor see why?</p>
@@ -393,8 +400,6 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 </main>
 <script>
 const D={email:'chimdiazie2022@gmail.com',
-skills:{'Machine learning':['PyTorch','transfer learning','CNNs','Grad-CAM','explainable AI','scikit-learn','OpenCV','NumPy','Pandas','precision, recall, F1','confusion matrix','ROC','class imbalance','local LLMs beside cloud models'],'Web and backend':['HTML','CSS','JavaScript','Flask','REST APIs','JWT authentication','SQLite','SQLAlchemy'],'Mobile':['Flutter'],'Tools':['Python','Git and GitHub','VS Code']},
-depth:{'Machine learning':'Used end to end in the final-year project.','Web and backend':'Built the full hospital app myself.','Mobile':'Working knowledge only.','Tools':'Daily drivers.'},
 demo:[
 {bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'An API is a set of agreed requests one program can make to another, such as asking a weather service for tomorrow\'s forecast and getting data back.'},
 {bal:['Router (llama3.2:3b): CHAT','No tools. Answered on the device.'],tur:['Sent to gpt-oss-120b on Groq with tools available','The model answered without calling a tool'],a:'Local hosting is cheaper and private but limited by your hardware. Cloud hosting scales and stays online but costs per use. A hybrid keeps routine work local and sends only hard problems to the cloud.'},
@@ -430,7 +435,7 @@ $$('.mag').forEach(m=>{m.addEventListener('pointermove',e=>{if(RM||e.pointerType
 /* reveals */
 function count(c){const to=+c.dataset.to;if(RM||document.body.classList.contains('quick')){c.textContent=to.toFixed(2);return}const s=performance.now();(function f(n){const p=Math.min(1,(n-s)/1200);c.textContent=(to*(1-Math.pow(1-p,3))).toFixed(2);if(p<1)requestAnimationFrame(f)})(s)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{const on=e.isIntersecting;e.target.classList.toggle('in',on);if(on)e.target.querySelectorAll('.cnt').forEach(count)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-$$('h2,.sum,.cols>*,.lede>*,.big>*,.mono,.tabs,.chips,.tl').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--dl',(i%4)*80+'ms');io.observe(el)});
+$$('h2,.sum,.cols>*,.lede>*,.big>*,.mono,.tl').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--dl',(i%4)*80+'ms');io.observe(el)});
 const h1=$('h1');h1.setAttribute('aria-label','Chimdiume Azie');
 function fit(){h1.style.fontSize='';let s=parseFloat(getComputedStyle(h1).fontSize);while(h1.scrollWidth>h1.clientWidth+1&&s>18){s-=2;h1.style.fontSize=s+'px'}}
 fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
@@ -451,8 +456,6 @@ const demo=$('#demo');demo.hidden=false;let mode='bal';$$('.demo .seg button').f
 const log=$('#log');let typing;$$('.demo .ask button').forEach(b=>b.onclick=()=>{clearInterval(typing);const d=D.demo[b.dataset.q];log.innerHTML='';const u=document.createElement('div');u.className='u';u.textContent=b.textContent;const a=document.createElement('div');a.className='a';
 d[mode].forEach(t=>{const r=document.createElement('div');r.className='route';r.textContent='→ '+t;a.append(r)});
 const tx=document.createElement('div');a.append(tx);log.append(u,a);if(RM||document.body.classList.contains('quick')){tx.textContent=d.a;return}let i=0;typing=setInterval(()=>{tx.textContent=d.a.slice(0,++i);if(i>=d.a.length)clearInterval(typing)},14)});
-/* skills */
-const tb=$('#tabs'),ch=$('#chips');Object.keys(D.skills).forEach((k,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=k;b.onclick=()=>{$$('#tabs button').forEach(z=>z.setAttribute('aria-selected',z===b));ch.innerHTML=D.skills[k].map(s=>`<span>${s}</span>`).join('');$('#depth').textContent=D.depth[k]};tb.append(b);if(!i)b.click()});
 /* click-to-enlarge (without JS the link just opens the image) */
 const lb=$('#lb');document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a.zoom');if(!a||!lb.showModal)return;e.preventDefault();const im=a.querySelector('img'),fc=a.closest('figure')?.querySelector('figcaption');$('#lbi').src=a.getAttribute('href');$('#lbi').alt=im?im.alt:'';$('#lbc').textContent=fc?fc.textContent:'';lb.showModal()});
 lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
