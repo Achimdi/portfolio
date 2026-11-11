@@ -144,6 +144,24 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 #lbc{font:.8rem var(--m);color:var(--mid);margin-top:.5rem}#lb form{display:flex;justify-content:flex-end;margin-bottom:.6rem}
 @media(max-width:900px){.card{grid-template-columns:1fr}}
 @media(max-width:700px){.grid{grid-template-columns:1fr}}
+/* refresh: NeuroScan results and Grad-CAM */
+.results{margin-top:2.5rem}.results>h4{margin-top:0}
+.results .cols{gap:clamp(1.2rem,4vw,3rem)}
+.metrics td{font-variant-numeric:tabular-nums;white-space:nowrap}.metrics tr.ref th,.metrics tr.ref td{color:var(--mid);font-style:italic}
+.notes{margin-top:1.5rem}.notes p{max-width:60ch}
+.gc-pair{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;max-width:520px}
+.gc-pair img{width:100%;height:auto;border-radius:6px;background:#000}
+.gc .l-only{display:none}.gc.live .l-only{display:inline}.gc.live .s-only{display:none}
+.gc.live .gc-pair{display:block;position:relative;width:min(100%,360px);aspect-ratio:336/408;overflow:hidden;border-radius:8px;background:#000;touch-action:pan-y;cursor:crosshair;--x:50%;--y:50%;--r:90px}
+.gc.live .gc-pair img{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
+.gc.live[data-v=lens] .cam{-webkit-mask:radial-gradient(circle var(--r) at var(--x) var(--y),#000 70%,#0000);mask:radial-gradient(circle var(--r) at var(--x) var(--y),#000 70%,#0000)}
+.gc.live[data-v=off] .cam{opacity:0}
+.gc-ctl{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin-top:.8rem}
+.gc-ctl .seg{display:flex}.gc-ctl .seg button{font:500 .85rem var(--b);border:1px solid var(--ink);background:none;color:var(--ink);padding:.5rem .9rem;min-height:44px;cursor:pointer;margin-left:-1px}
+.gc-ctl .seg button:first-child{border-radius:99px 0 0 99px;margin-left:0}.gc-ctl .seg button:last-child{border-radius:0 99px 99px 0}
+.gc-ctl .seg [aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.gc-size{font:.8rem var(--m);color:var(--mid);display:flex;align-items:center;gap:.5rem}.gc:not([data-v=lens]) .gc-size{visibility:hidden}
+@media(max-width:700px){.metrics td{white-space:normal}th,td{padding:.45rem .35rem}table{font-size:.88rem}}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
@@ -198,16 +216,44 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 <ul class="facts">
 <li>Fine-tuned EfficientNet-B0 on 44,355 OASIS MRI images on a laptop CPU: 25 epochs in about 119 hours.</li>
 <li>Every prediction comes with a Grad-CAM heatmap, saved to the patient record in a Flask app with Admin and Doctor roles.</li>
-<li>Honest result: 98.66% validation accuracy did not carry over to a differently balanced test set, and the model never caught a ModerateDemented case.</li>
+<li>On the held-out test set: 77.35% accuracy but 40.4% balanced accuracy, below an always-NonDemented baseline of 88.5%. It never caught a ModerateDemented case.</li>
 </ul>
-<p class="links"><span class="todo">[TODO: github.com/Achimdi/neuroscan-ai returns 404. Make the repo public, or tell me the right link]</span><span class="todo">[TODO: 60–90 s screen recording of the hospital app]</span><span class="todo">[TODO: write-up or thesis PDF link]</span></p>
+<p class="links"><span class="todo">[TODO: github.com/Achimdi/neuroscan-ai returns 404. Make the repo public, or tell me the right link]</span><span class="todo">[TODO: 60–90 s screen recording of the hospital app]</span><!-- When the recording exists, replace the TODO with: <a class="btn" href="assets/video/neuroscan.mp4">Watch the 90 s demo</a> --><span class="todo">[TODO: write-up or thesis PDF link]</span></p>
 </div>
-<figure class="cvis"><div class="lens" id="lens" tabindex="0" data-cur="Look" aria-label="Grad-CAM lens. Move the pointer or use arrow keys to reveal the heatmap over the MRI."><img src="assets/img/mri-slice.webp" alt="Brain MRI slice"><img class="cam" src="assets/img/gradcam.webp" alt="Grad-CAM heatmap of the same slice"></div>
-<figcaption>Real MRI slice and its Grad-CAM from the app (case predicted VeryMildDemented, 100.0% confidence). Move over it, or use arrow keys. <label>Lens <input type="range" id="lr" min="40" max="220" value="90"></label></figcaption></figure>
+<figure class="cvis gc" id="gc">
+<div class="gc-pair" id="lens" aria-label="Grad-CAM lens: move the pointer or use the arrow keys to reveal the heatmap over the MRI">
+<img src="assets/img/mri-slice.webp" width="336" height="408" alt="Axial brain MRI slice from the app.">
+<img class="cam" src="assets/img/gradcam.webp" width="336" height="408" alt="Grad-CAM heatmap for the same slice. Warm colours mark the regions that most influenced the prediction.">
 </div>
-<div class="cols results"><div><h4 style="margin-top:0">Four stages, honest numbers</h4><div class="stages" id="stg" role="group" aria-label="Stage"></div><div class="panel" id="sp" aria-live="polite"></div>
-<div class="big"><div><b><span class="cnt" data-to="98.66">98.66</span>%</b>validation accuracy, best at epoch 19</div><div class="t"><b><span class="cnt" data-to="77.35">77.35</span>%</b>held-out test accuracy</div></div></div>
-<div><h4>What I found, and why</h4><p>The original test split was heavily skewed: 88.5% NonDemented against 40.8% in training. Minority classes suffered most, and an always-NonDemented model would score about 88.5% on that test set, so I treat 77.35% as a warning about the split, not as a verdict on the idea.</p></div></div>
+<div class="gc-ctl" hidden><div class="seg" role="group" aria-label="Heatmap view"><button type="button" data-v="lens" aria-pressed="true">Lens</button><button type="button" data-v="full" aria-pressed="false">Heatmap</button><button type="button" data-v="off" aria-pressed="false">MRI only</button></div>
+<label class="gc-size">Lens size <input type="range" id="lr" min="40" max="220" value="90"></label></div>
+<figcaption>A real MRI slice and its Grad-CAM from the app. <span class="s-only">Left: the scan. Right: the heatmap.</span><span class="l-only">Move the pointer over the scan, use the arrow keys, or switch views with the buttons.</span> The app labelled this case VeryMildDemented with a softmax score of 100.0%. The model is not calibrated, so read that score as its top choice, not as a probability.</figcaption>
+</figure>
+</div>
+<div class="results">
+<h4>Results on the held-out test set</h4>
+<div class="cols">
+<table class="metrics"><caption>Headline metrics</caption><tbody>
+<tr><th scope="row">Validation accuracy (best epoch, 19 of 25)</th><td>98.66%</td></tr>
+<tr><th scope="row">Held-out test accuracy</th><td>77.35%</td></tr>
+<tr class="ref"><th scope="row">Always-NonDemented baseline, same test set</th><td>88.5%</td></tr>
+<tr><th scope="row">Balanced accuracy (mean per-class recall), test</th><td><b>40.4%</b></td></tr>
+<tr><th scope="row">Macro-F1, test</th><td><b>0.34</b></td></tr>
+</tbody></table>
+<table class="metrics"><caption>Per class, test set</caption><thead><tr><th scope="col">Class</th><th scope="col">Test images</th><th scope="col">Recall</th><th scope="col">Precision</th></tr></thead><tbody>
+<tr><td>Non<wbr>Demented</td><td>40,852</td><td>81.0%</td><td>95.5%</td></tr>
+<tr><td>VeryMild<wbr>Demented</td><td>4,505</td><td>54.6%</td><td>27.6%</td></tr>
+<tr><td>Mild<wbr>Demented</td><td>659</td><td>26.1%</td><td>6.7%</td></tr>
+<tr><td>Moderate<wbr>Demented</td><td>168</td><td>0.0%</td><td>0.0%</td></tr>
+</tbody></table>
+</div>
+<!-- Balanced accuracy, macro-F1 and the per-class figures are computed from the confusion-matrix counts in assets/img/confusion-matrix.webp
+     (also listed under Technical details). They reproduce the published 77.35% accuracy, the 88.5% baseline and every published precision and recall. -->
+<div class="cols notes">
+<p><b>Why accuracy is the wrong headline here.</b> 88.5% of the test images are NonDemented (against 40.8% in training), so a model that always answers NonDemented would score about 88.5%, higher than mine. Balanced accuracy and per-class recall show what the model really does: it finds 81% of NonDemented and about half of VeryMildDemented scans, rarely finds MildDemented, and never found a ModerateDemented case, even with a class weight of 13.3.</p>
+<p><b>How validation was split.</b> 80/20 from the training images, <span class="todo">[TODO: confirm whether the split was per patient or per image]</span>. If it was per image, slices from the same patient can land in both sets, which would inflate the 98.66% validation figure. I list that as a limitation.</p>
+</div>
+</div>
 <div class="grid">
 <figure><a class="zoom" href="assets/img/confusion-matrix.webp"><img src="assets/img/confusion-matrix.webp" width="800" height="660" loading="lazy" alt="Confusion matrix on the 46,184-image test set. Most NonDemented scans are correct; many are predicted VeryMildDemented, and no ModerateDemented scan is predicted correctly."></a><figcaption>Confusion matrix, held-out test set</figcaption></figure>
 <figure><a class="zoom" href="assets/img/training-curves.webp"><img src="assets/img/training-curves.webp" width="900" height="321" loading="lazy" alt="Training and validation loss and accuracy curves over 25 epochs."></a><figcaption>Training and validation curves</figcaption></figure>
@@ -215,8 +261,15 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 <figure><a class="zoom" href="assets/img/neuroscan-signin.webp"><img src="assets/img/neuroscan-signin.webp" width="700" height="620" loading="lazy" alt="NeuroScan AI sign-in screen with Admin and Doctor roles."></a><figcaption>Sign-in for Admin and Doctor roles</figcaption></figure>
 </div>
 <details class="tech"><summary>Technical details</summary><div>
-<h4>Model and explanations</h4><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps, which for Mild and Moderate cases concentrated on the hippocampus, medial temporal lobe and ventricles.</p>
+<h4>Model and explanations</h4><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps for every prediction. In the Mild and Moderate examples I looked at, the heatmaps tended to concentrate around the hippocampus, medial temporal lobe and ventricles. That is a visual observation, not a measured or clinically validated localisation.</p>
 <h4>Data and training</h4><p>OASIS Alzheimer's MRI from Kaggle: 44,355 training images (80/20 split) and a separate test set of 46,184. Class-weighted cross-entropy for imbalance, light augmentation, Adam at 1e-4, batch 32, 25 epochs, about 119 hours of training on a laptop with no GPU.</p>
+<h4>Confusion matrix counts</h4>
+<table><caption>Rows: actual class. Columns: predicted class. Test set, 46,184 images.</caption><thead><tr><th scope="col">Actual \ predicted</th><th scope="col">Mild</th><th scope="col">Moderate</th><th scope="col">Non</th><th scope="col">VeryMild</th></tr></thead><tbody>
+<tr><th scope="row">Mild<wbr>Demented</th><td>172</td><td>8</td><td>196</td><td>283</td></tr>
+<tr><th scope="row">Moderate<wbr>Demented</th><td>20</td><td>0</td><td>16</td><td>132</td></tr>
+<tr><th scope="row">Non<wbr>Demented</th><td>1,679</td><td>35</td><td>33,090</td><td>6,048</td></tr>
+<tr><th scope="row">VeryMild<wbr>Demented</th><td>694</td><td>1</td><td>1,349</td><td>2,461</td></tr>
+</tbody></table>
 <h4>Hospital app</h4><p>Flask app with Admin and Doctor roles, JWT authentication, one-time registration codes, patient records, MRI upload, saved results and an audit trail for patient transfers (SQLite, SQLAlchemy, 6 tables).</p>
 <h4>Next steps</h4><p>Stratified splitting, GPU training, local Nigerian hospital data, clinical validation, longitudinal tracking and a lightweight offline or mobile version.</p>
 <p class="mono">Stack: Python, PyTorch, timm, torchvision, OpenCV, scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Flask, Flask-JWT-Extended, Flask-SQLAlchemy, SQLite, HTML/CSS/JavaScript.</p>
@@ -255,7 +308,6 @@ th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);ve
 </main>
 <script>
 const D={email:'chimdiazie2022@gmail.com',
-stages:{NonDemented:'Precision 0.9550 · recall 0.8100 on the test set.',VeryMildDemented:'Recall 0.5463 on the test set. The Grad-CAM beside this one is a case the app called VeryMildDemented.',MildDemented:'Precision 0.0671 · recall 0.2610. Heatmaps for Mild cases concentrated on the hippocampus, medial temporal lobe and ventricles.',ModerateDemented:'168 test samples, none found (recall 0). Class weight 13.312 was not enough on its own; this is the clearest case for better splits and more data.'},
 skills:{'Machine learning':['PyTorch','transfer learning','CNNs','Grad-CAM','explainable AI','scikit-learn','OpenCV','NumPy','Pandas','precision, recall, F1','confusion matrix','ROC','class imbalance','local LLMs beside cloud models'],'Web and backend':['HTML','CSS','JavaScript','Flask','REST APIs','JWT authentication','SQLite','SQLAlchemy'],'Mobile':['Flutter'],'Tools':['Python','Git and GitHub','VS Code']},
 depth:{'Machine learning':'Used end to end in the final-year project.','Web and backend':'Built the full hospital app myself.','Mobile':'Working knowledge only.','Tools':'Daily drivers.'},
 demo:[{f:1,r:'Routed to Llama on this machine: a short question needs little reasoning, so it stays local and costs nothing per request.',a:'An API is a set of agreed requests a program can make to another program, such as asking a weather service for tomorrow\'s forecast and getting data back.'},{f:0,r:'Escalated to Claude in the cloud: a multi-step comparison needs deeper reasoning than a quick local answer.',a:'Local hosting is cheaper and private but limited by your hardware. Cloud hosting scales and stays online but costs per use. A hybrid keeps routine work local and escalates only hard problems.'}]};
@@ -299,13 +351,13 @@ const th=$('#th'),setT=t=>{document.documentElement.dataset.theme=t;th.textConte
 setT(st||'light');th.onclick=()=>setT(document.documentElement.dataset.theme==='dark'?'light':'dark');
 /* portrait */
 $('#por').onclick=()=>$('#por').classList.toggle('sw');
-/* lens */
-const L=$('#lens');function lens(e){const r=L.getBoundingClientRect();L.style.setProperty('--x',((e.clientX-r.left)/r.width*100)+'%');L.style.setProperty('--y',((e.clientY-r.top)/r.height*100)+'%')}
+/* Grad-CAM lens: static side-by-side without JS or with reduced motion */
+const gc=$('#gc'),L=$('#lens');if(!RM){gc.classList.add('live');gc.dataset.v='lens';$('.gc-ctl').hidden=false;L.tabIndex=0;L.setAttribute('role','img')}
+function lens(e){const r=L.getBoundingClientRect();L.style.setProperty('--x',((e.clientX-r.left)/r.width*100)+'%');L.style.setProperty('--y',((e.clientY-r.top)/r.height*100)+'%')}
 L.addEventListener('pointermove',lens);L.addEventListener('pointerdown',lens);
-L.addEventListener('keydown',e=>{const k={ArrowLeft:[-5,0],ArrowRight:[5,0],ArrowUp:[0,-5],ArrowDown:[0,5]}[e.key];if(!k)return;e.preventDefault();const g=a=>parseFloat(getComputedStyle(L).getPropertyValue(a));L.style.setProperty('--x',Math.min(100,Math.max(0,g('--x')+k[0]))+'%');L.style.setProperty('--y',Math.min(100,Math.max(0,g('--y')+k[1]))+'%')});
+L.addEventListener('keydown',e=>{const k={ArrowLeft:[-5,0],ArrowRight:[5,0],ArrowUp:[0,-5],ArrowDown:[0,5]}[e.key];if(!k||!gc.classList.contains('live'))return;e.preventDefault();const g=a=>parseFloat(getComputedStyle(L).getPropertyValue(a));L.style.setProperty('--x',Math.min(100,Math.max(0,g('--x')+k[0]))+'%');L.style.setProperty('--y',Math.min(100,Math.max(0,g('--y')+k[1]))+'%')});
 $('#lr').oninput=e=>L.style.setProperty('--r',e.target.value+'px');
-/* stages */
-const sg=$('#stg'),sp=$('#sp');Object.keys(D.stages).forEach((k,i)=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{$$('#stg button').forEach(z=>z.setAttribute('aria-pressed',z===b));sp.textContent=D.stages[k]};sg.append(b);if(!i)b.click()});
+$$('.gc-ctl .seg button').forEach(b=>b.onclick=()=>{gc.dataset.v=b.dataset.v;$$('.gc-ctl .seg button').forEach(z=>z.setAttribute('aria-pressed',z===b))});
 /* nellow ring + demo */
 const R=$('#ring');R.parentElement.addEventListener('pointermove',e=>{const r=R.getBoundingClientRect();R.style.setProperty('--rx',(60+((e.clientY-r.top)/r.height-.5)*50)+'deg');R.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*60)+'deg')});
 let mode='fast';$$('.demo .seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.demo .seg button').forEach(z=>z.setAttribute('aria-pressed',z===b))});
