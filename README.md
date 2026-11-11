@@ -1,68 +1,61 @@
 # Chimdiume Azie: Portfolio
 
-A single-page portfolio for an AI/ML developer. It is one self-contained `index.html` file plus `CV.pdf`. There is no build step, no framework and no npm install.
+A single-page portfolio for an AI/ML developer: one `index.html`, an `assets/` folder and `CV.pdf`. There is no build step, no framework and no npm install.
 
 Live site: https://achimdi.github.io/portfolio/
+
+## Page structure
+
+1. Hero: name, one-sentence pitch, availability and timezone, CV and email buttons, a static tag row
+2. Selected work: Nellow, NeuroScan AI, Twzee Foods. Every project uses the same card:
+   title, one-sentence outcome, role and stack chips, three key facts, one visual, links,
+   then a native `<details>` block called "Technical details" for the depth
+3. Skills: four static groups, each naming the project that shows it
+4. About: short story, working style, one line of education, headshot
+5. Contact
 
 ## What it is built with
 
 | Layer | Technology |
 |---|---|
-| Structure | HTML5 (semantic sections, ARIA labels, keyboard focus) |
+| Structure | HTML5 (semantic sections, `<details>`, `<dialog>`, tables, inline SVG) |
 | Styling | CSS3: custom properties, Grid, Flexbox, `clamp()` fluid sizing, media queries |
-| Behaviour | Vanilla JavaScript (ES6+), no libraries |
-| Fonts | Google Fonts: Syne (headings), Instrument Sans (body), Fragment Mono (labels) |
-| Images | WebP files in `assets/img/` |
+| Behaviour | Vanilla JavaScript (ES6+), no libraries. The page is fully readable without it |
+| Fonts | Google Fonts: Instrument Serif (headings), Instrument Sans (body), Fragment Mono (labels), loaded without blocking render |
+| Images | WebP files in `assets/img/`, with `width`, `height` and lazy loading |
 | Hosting | GitHub Pages |
 
-**Not used:** TypeScript, React, GSAP, Lenis, Three.js or any other package. Everything below is plain browser features.
+## Interactions that remain
 
-## How each effect is made
-
-| Effect | How |
-|---|---|
-| Intro name reveal | JavaScript splits the name into letters; CSS `@keyframes` slides each one up, then a `clip-path` wipe removes the screen. Skippable with a button or Esc. |
-| Hero heat trail | HTML `<canvas>` (2D context). Radial gradients in heat-map colours are drawn at the cursor or finger and slowly erased with `destination-out` compositing, inside a `requestAnimationFrame` loop. Blended with `mix-blend-mode` (multiply in light, screen in dark). It pauses when the hero is off screen. |
-| Floating colour blobs, dotted grid | CSS `radial-gradient`, `filter: blur()` and a looping keyframe animation. |
-| Custom cursor | A fixed `<div>` that follows the pointer with easing; its label changes from `data-cur` attributes. Desktop only; the real cursor is never hidden except over the MRI lens. |
-| Magnetic buttons | Pointer Events measure the pointer position and apply a small CSS `transform: translate()`. |
-| Scroll pop-in and pop-out | `IntersectionObserver` toggles an `.in` class as elements enter and leave the screen; CSS `transition` on opacity and transform does the movement, with a small stagger. |
-| Count-up numbers | `requestAnimationFrame` with an ease-out curve, restarted each time the numbers scroll into view. |
-| Project carousels | Flexbox track moved with `transform: translateX()`; autoplay with `setInterval`, pause on hover, arrows, dots, swipe (Pointer Events) and arrow-key control. |
-| Ticker bands | Two CSS `@keyframes` marquees running in opposite directions, tilted with `transform: rotate()`. Stars are CSS `clip-path` shapes. |
-| Grad-CAM lens | A real MRI slice with its real Grad-CAM image on top, revealed through a CSS `mask: radial-gradient()` whose position follows the pointer through CSS variables. Keyboard arrows move it too. |
-| Nellow 3D ring | Three rings (a decorative effect on this site only) using CSS 3D transforms (`perspective`, `rotateX`, `rotateY`) that tilt with the pointer. |
-| Nellow chat demo | A scripted recreation in JavaScript (typing effect, Fast/Deep toggle). It is not a live model. |
-| Portrait photo swap | Two stacked images; CSS fades between them on hover, and a click toggles it on touch screens. |
-| Light and dark mode | A `data-theme` attribute switches CSS variables. The site opens in light mode, and the visitor's choice is saved in `localStorage`. |
-| Skills tabs | JavaScript renders the chips for each tab from a data object. |
-| Name fitting | A small script shrinks the hero name until it fits the screen, so it never wraps or clips. |
-| Quick view | A `quick` class on `<body>` turns off the heat trail, cursor, animations and autoplay. |
-| Reduced motion | `prefers-reduced-motion` is respected: animations and autoplay are switched off. |
-
-## Tools used to prepare the content
-
-- Python with Pillow and NumPy: colour-corrected and cropped the portraits, cropped the screenshots, and converted all images to WebP.
-- The MRI slice, Grad-CAM image, confusion matrix, training curves and ROC curves come from the final-year project document and the app's own screenshots.
-
-## Files
-
-- `index.html`: the whole site (HTML, CSS and JavaScript)
-- `assets/img/`: the images
-- `CV.pdf`: the CV behind the Download CV buttons; keep it in the same folder as `index.html`
-- `README.md`: this file
+| Feature | How | Without JS or with reduced motion |
+|---|---|---|
+| Hero heat trail | `<canvas>` radial gradients that follow the pointer, paused off screen | Hidden |
+| Grad-CAM lens | CSS `mask: radial-gradient()` driven by pointer or arrow keys, plus Lens / Heatmap / MRI-only buttons and a size slider | Scan and heatmap shown side by side |
+| Click to enlarge | Image links open in a native `<dialog>` | The link opens the image file |
+| Nellow simulation | Scripted, labelled as a simulation; mirrors the real Balanced and Turbo routes | Hidden, with a short note |
+| Copy email | Copies the address from the Contact section | Buttons fall back to links |
+| Light and dark | `data-theme` on `<html>`, set before first paint, saved in `localStorage` | Light theme |
+| Quick view | `quick` class on `<body>` turns off the heat trail and all animation | Not needed |
 
 ## Editing it
 
-- Text, links and the email address are plain text inside `index.html`. Open it in VS Code and search for what you want to change.
-- The skills tabs and the demo chat answers are in the `D` object at the top of the `<script>`.
-- Colours and fonts are CSS variables at the top of the `<style>` block (`:root` for light, `[data-theme=dark]` for dark).
-- Images live in `assets/img/`. To swap one, convert the new image to WebP, keep the file name (or update the `src`), and update the `width` and `height` attributes on its `<img>` tag.
-- To update the CV, replace `CV.pdf` and keep the same file name.
+- **Email:** change it in one place, the line marked `<!-- EMAIL: ... -->` in the Contact section. The nav link and both Copy buttons read it from there.
+- **Headshot:** replace `assets/img/portrait-1.webp` (see the `<!-- HEADSHOT: ... -->` comment) and keep the `width` and `height` attributes in step.
+- **TODOs:** every missing fact is a visible `[TODO: ...]` with the class `todo`. Search `index.html` for `TODO` before publishing.
+- **Images:** convert to WebP, put them in `assets/img/`, and set `width`, `height`, `alt` and `loading="lazy"` on the `<img>`.
+- **Colours and fonts:** CSS variables at the top of the `<style>` block (`:root` for light, `[data-theme=dark]` for dark).
+- **Social preview:** `assets/og.png` (1200×630). The canonical URL, Open Graph tags and JSON-LD are in `<head>`.
+- **CV:** replace `CV.pdf` and keep the same file name.
+
+## Where the numbers come from
+
+- NeuroScan AI balanced accuracy, macro-F1 and per-class precision and recall are computed from the confusion-matrix counts in `assets/img/confusion-matrix.webp`. They reproduce the published 77.35% accuracy, the 88.5% baseline and every previously published precision and recall.
+- Nellow's modes, models, limits and failure handling are taken from `app.py` and `server.py` in https://github.com/Achimdi/nellow.
+- Twzee Foods Lighthouse scores were measured on the live site with Lighthouse 12.8 (mobile) on 11 Nov 2026.
 
 ## Deploying
 
-1. Put `index.html`, `CV.pdf` and the `assets/` folder in the repo https://github.com/Achimdi/portfolio.
+1. Put `index.html`, `CV.pdf` and the `assets/` folder in https://github.com/Achimdi/portfolio.
 2. In GitHub, go to Settings, then Pages, choose "Deploy from a branch", pick `main` and `/ (root)`, and Save.
 3. The site goes live at https://achimdi.github.io/portfolio/ after a minute or two.
 
