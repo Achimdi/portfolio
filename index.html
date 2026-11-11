@@ -125,6 +125,11 @@ h1{font-size:clamp(2.8rem,12vw,9rem);letter-spacing:-.02em;line-height:1}h1 em{f
 h2{font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.01em;line-height:1}h3{font-size:1.6rem}.tabs button{font-size:clamp(1.3rem,3vw,2rem)}nav .brand{font-size:1.25rem}
 #hero:before{opacity:.45}.lens{touch-action:pan-y;cursor:crosshair;width:min(100%,300px)}
 .mq{padding:.85rem 0;border-block:1px solid var(--line);background:var(--paper)}.mq>div{display:flex;align-items:center;gap:1.4rem;width:max-content;animation:mq 50s linear infinite;font:400 .78rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--mid);white-space:nowrap}.mq i{display:block;width:4px;height:4px;border-radius:50%;background:var(--hot)}
+/* refresh: structure */
+.proj{padding:3.5rem 0;border-top:1px solid var(--line)}.proj:first-of-type{border-top:0;padding-top:0}
+.pt{font:400 clamp(2rem,5vw,3.6rem)/1 var(--d);letter-spacing:-.01em;margin:0 0 1rem}
+h4{font:400 1.45rem var(--d);margin:2rem 0 .6rem}
+.todo{background:#fff3c4;color:#3d2c00;border:1px dashed #a07000;border-radius:4px;padding:0 .3em;font:inherit;font-size:.92em}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
@@ -137,43 +142,49 @@ h2{font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.01em;line-height:1}h3{fon
 <div class="lede"><div><p>I build AI that shows its work: brain-scan classification you can inspect, and an agent that runs on my own machine.</p><small>AI/ML developer · B.Sc. Computer Science, Godfrey Okoye University, 2026 · Nigeria · open to entry-level AI/ML and software engineering roles, remote work or relocation</small></div>
 <div class="row"><a class="btn solid mag" href="CV.pdf" download>Download CV</a><button class="btn mag" id="cp">Copy email</button><a class="btn mag" href="#work" data-cur="Open">See the work</a></div></div></div></header><div class="mq" aria-hidden="true"><div><span>Explainable AI</span><i></i><span>Grad-CAM</span><i></i><span>PyTorch</span><i></i><span>Flask</span><i></i><span>Local-first agents</span><i></i><span>Open to remote work and relocation</span><i></i><span>Explainable AI</span><i></i><span>Grad-CAM</span><i></i><span>PyTorch</span><i></i><span>Flask</span><i></i><span>Local-first agents</span><i></i><span>Open to remote work and relocation</span><i></i></div></div>
 
-<section id="about"><div class="wrap cols"><div><h2>Why show the reasoning</h2>
-<p>I just graduated in Computer Science and spent my final year on one question: when a model says a brain scan looks like early Alzheimer's, can a doctor see why?</p>
-<p>So I built the classifier, the explanation layer and the hospital app around them, and made it work on a laptop with no GPU. I report the weak results next to the strong ones, and I fix what I find.</p></div>
-<div class="por" data-cur="Swap" id="por" role="img" aria-label="Portrait of Chimdiume Azie. Hover or tap to swap photos."><img src="assets/img/portrait-1.webp" alt=""><img src="assets/img/portrait-2.webp" alt=""></div></div></section>
-
-<section id="work"><div class="wrap"><h2>NeuroScan AI</h2>
-<p class="sum">Final-year project: a system that classifies brain MRI into four Alzheimer's stages, shows which regions drove each prediction, and wraps both in a hospital web app. It was built to run on a laptop with no GPU, so hospitals with few resources could use it. It is a research prototype, not clinically validated and not a medical device.</p>
-<p class="mono"><a href="https://github.com/Achimdi/neuroscan-ai" target="_blank" rel="noopener" data-cur="Open">github.com/Achimdi/neuroscan-ai</a></p>
-<div class="cols" style="margin-top:2rem"><div>
-<div class="lens" id="lens" tabindex="0" data-cur="Look" aria-label="Grad-CAM lens. Move the pointer or use arrow keys to reveal the heatmap over the MRI."><img src="assets/img/mri-slice.webp" alt="Brain MRI slice"><img class="cam" src="assets/img/gradcam.webp" alt="Grad-CAM heatmap of the same slice"></div>
-<p class="mono" style="margin-top:.6rem">Real MRI slice and its Grad-CAM from the app (case predicted VeryMildDemented, 100.0% confidence). Move over it, or use arrow keys. <label>Lens <input type="range" id="lr" min="40" max="220" value="90"></label></p></div>
-<div><h3 style="margin-top:0">Four stages, honest numbers</h3><div class="stages" id="stg" role="group" aria-label="Stage"></div><div class="panel" id="sp" aria-live="polite"></div>
-<div class="big"><div><b><span class="cnt" data-to="98.66">98.66</span>%</b>validation accuracy, best at epoch 19</div><div class="t"><b><span class="cnt" data-to="77.35">77.35</span>%</b>held-out test accuracy</div></div></div></div>
-
-<div class="cols"><div><h3>What I found, and why</h3><p>The original test split was heavily skewed: 88.5% NonDemented against 40.8% in training. Minority classes suffered most, and an always-NonDemented model would score about 88.5% on that test set, so I treat 77.35% as a warning about the split, not as a verdict on the idea.</p><p>Next steps: stratified splitting, GPU training, local Nigerian hospital data, clinical validation, longitudinal tracking and a lightweight offline or mobile version.</p></div>
-<div><h3>What I built</h3><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps, which for Mild and Moderate cases concentrated on the hippocampus, medial temporal lobe and ventricles. A Flask app with Admin and Doctor roles, JWT authentication, one-time registration codes, patient records, MRI upload, saved results and an audit trail for patient transfers (SQLite, SQLAlchemy, 6 tables).</p><p>Data: OASIS Alzheimer's MRI from Kaggle, 44,355 training images (80/20 split) and a separate test set of 46,184. Class-weighted cross-entropy for imbalance, light augmentation, Adam at 1e-4, batch 32, 25 epochs, about 119 hours of training on a laptop with no GPU.</p></div></div>
-<div class="car" data-cur="Drag" aria-roledescription="carousel"><div class="ct"><div class="cs"><img src="assets/img/neuroscan-signin.webp" alt="Sign-in for Admin and Doctor roles" loading="lazy"><p>Sign-in for Admin and Doctor roles</p></div><div class="cs"><img src="assets/img/confusion-matrix.webp" alt="Confusion matrix on the test set" loading="lazy"><p>Confusion matrix on the test set</p></div><div class="cs"><img src="assets/img/training-curves.webp" alt="Training and validation curves" loading="lazy"><p>Training and validation curves</p></div><div class="cs"><img src="assets/img/roc-curves.webp" alt="ROC curves, four classes" loading="lazy"><p>ROC curves, four classes</p></div></div><button class="cb p" aria-label="Previous slide">&lsaquo;</button><button class="cb n" aria-label="Next slide">&rsaquo;</button><div class="cd"></div></div>
-<p class="mono">Stack: Python, PyTorch, timm, torchvision, OpenCV, scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Flask, Flask-JWT-Extended, Flask-SQLAlchemy, SQLite, HTML/CSS/JavaScript.</p></div></section>
-
-<section id="nellow"><div class="wrap"><h2>Nellow</h2>
+<section id="work" aria-labelledby="work-h"><div class="wrap"><h2 id="work-h">Selected work</h2>
+<article class="proj" id="nellow">
+<h3 class="pt">Nellow</h3>
 <p class="sum">An AI agent I built that searches the live web, reads what it finds and answers with sources. It runs on my own hardware or in the cloud, with a local Llama model for quick answers and Claude for harder reasoning.</p>
 <p class="mono"><a href="https://github.com/Achimdi/nellow" target="_blank" rel="noopener" data-cur="Open">github.com/Achimdi/nellow</a></p>
 <div class="car" data-cur="Drag" aria-roledescription="carousel"><div class="ct"><div class="cs"><img src="assets/img/nellow-landing.webp" alt="Nellow landing page" loading="lazy"><p>Nellow landing page</p></div><div class="cs"><img src="assets/img/nellow-workspace.webp" alt="Nellow workspace: history, projects, Fast selector" loading="lazy"><p>Nellow workspace: history, projects, Fast selector</p></div></div><button class="cb p" aria-label="Previous slide">&lsaquo;</button><button class="cb n" aria-label="Next slide">&rsaquo;</button><div class="cd"></div></div>
 <div class="cols"><div><div class="ring" id="ring" aria-hidden="true"><i></i><i></i><i></i></div><p class="mono" style="text-align:center;margin-top:1rem">Move over the ring. Nellow's own interface is metallic black and silver with one yellow accent.</p></div>
 <div><div class="demo" id="demo"><div class="top"><span>Demo recreation, scripted. Not a live model.</span><span class="seg" role="group" aria-label="Mode"><button aria-pressed="true" data-m="fast">Fast</button><button aria-pressed="false" data-m="deep">Deep</button></span></div>
-<div class="log" id="log" aria-live="polite"></div><div class="ask"><button data-q="0">What is an API?</button><button data-q="1">Compare two ways to host an agent</button></div></div></div></div></div></section>
+<div class="log" id="log" aria-live="polite"></div><div class="ask"><button data-q="0">What is an API?</button><button data-q="1">Compare two ways to host an agent</button></div></div></div></div>
+</article>
+<article class="proj" id="neuroscan">
+<h3 class="pt">NeuroScan AI</h3>
+<p class="sum">Final-year project: a system that classifies brain MRI into four Alzheimer's stages, shows which regions drove each prediction, and wraps both in a hospital web app. It was built to run on a laptop with no GPU, so hospitals with few resources could use it. It is a research prototype, not clinically validated and not a medical device.</p>
+<p class="mono"><a href="https://github.com/Achimdi/neuroscan-ai" target="_blank" rel="noopener" data-cur="Open">github.com/Achimdi/neuroscan-ai</a></p>
+<div class="cols" style="margin-top:2rem"><div>
+<div class="lens" id="lens" tabindex="0" data-cur="Look" aria-label="Grad-CAM lens. Move the pointer or use arrow keys to reveal the heatmap over the MRI."><img src="assets/img/mri-slice.webp" alt="Brain MRI slice"><img class="cam" src="assets/img/gradcam.webp" alt="Grad-CAM heatmap of the same slice"></div>
+<p class="mono" style="margin-top:.6rem">Real MRI slice and its Grad-CAM from the app (case predicted VeryMildDemented, 100.0% confidence). Move over it, or use arrow keys. <label>Lens <input type="range" id="lr" min="40" max="220" value="90"></label></p></div>
+<div><h4 style="margin-top:0">Four stages, honest numbers</h4><div class="stages" id="stg" role="group" aria-label="Stage"></div><div class="panel" id="sp" aria-live="polite"></div>
+<div class="big"><div><b><span class="cnt" data-to="98.66">98.66</span>%</b>validation accuracy, best at epoch 19</div><div class="t"><b><span class="cnt" data-to="77.35">77.35</span>%</b>held-out test accuracy</div></div></div></div>
 
-<section id="twzee"><div class="wrap"><h2>Twzee Foods</h2>
+<div class="cols"><div><h4>What I found, and why</h4><p>The original test split was heavily skewed: 88.5% NonDemented against 40.8% in training. Minority classes suffered most, and an always-NonDemented model would score about 88.5% on that test set, so I treat 77.35% as a warning about the split, not as a verdict on the idea.</p><p>Next steps: stratified splitting, GPU training, local Nigerian hospital data, clinical validation, longitudinal tracking and a lightweight offline or mobile version.</p></div>
+<div><h4>What I built</h4><p>EfficientNet-B0 in PyTorch with transfer learning (timm, 4,012,672 parameters fine-tuned, 224×224 input). Grad-CAM heatmaps, which for Mild and Moderate cases concentrated on the hippocampus, medial temporal lobe and ventricles. A Flask app with Admin and Doctor roles, JWT authentication, one-time registration codes, patient records, MRI upload, saved results and an audit trail for patient transfers (SQLite, SQLAlchemy, 6 tables).</p><p>Data: OASIS Alzheimer's MRI from Kaggle, 44,355 training images (80/20 split) and a separate test set of 46,184. Class-weighted cross-entropy for imbalance, light augmentation, Adam at 1e-4, batch 32, 25 epochs, about 119 hours of training on a laptop with no GPU.</p></div></div>
+<div class="car" data-cur="Drag" aria-roledescription="carousel"><div class="ct"><div class="cs"><img src="assets/img/neuroscan-signin.webp" alt="Sign-in for Admin and Doctor roles" loading="lazy"><p>Sign-in for Admin and Doctor roles</p></div><div class="cs"><img src="assets/img/confusion-matrix.webp" alt="Confusion matrix on the test set" loading="lazy"><p>Confusion matrix on the test set</p></div><div class="cs"><img src="assets/img/training-curves.webp" alt="Training and validation curves" loading="lazy"><p>Training and validation curves</p></div><div class="cs"><img src="assets/img/roc-curves.webp" alt="ROC curves, four classes" loading="lazy"><p>ROC curves, four classes</p></div></div><button class="cb p" aria-label="Previous slide">&lsaquo;</button><button class="cb n" aria-label="Next slide">&rsaquo;</button><div class="cd"></div></div>
+<p class="mono">Stack: Python, PyTorch, timm, torchvision, OpenCV, scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Flask, Flask-JWT-Extended, Flask-SQLAlchemy, SQLite, HTML/CSS/JavaScript.</p>
+</article>
+<article class="proj" id="twzee">
+<h3 class="pt">Twzee Foods</h3>
 <div class="cols"><div><p class="sum">A mobile-first menu and WhatsApp ordering website for a Nigerian healthy-food business. Visitors browse the full menu, pick sizes and extras, and send a ready-written order to the business on WhatsApp. It is built with plain HTML, CSS and JavaScript, keeps every price in one file the owner can update, and is hosted on Cloudflare.</p>
 <p class="mono">HTML · CSS · JavaScript · Git and GitHub · Cloudflare</p><p class="mono">Role: designer and developer</p>
 <p style="margin-top:1rem"><a class="btn solid" href="https://twzee.foodss.workers.dev/" target="_blank" rel="noopener" data-cur="Open">Visit the live site</a></p></div>
-<div class="frame"><i><s></s><s></s><s></s></i><img src="assets/img/twzee-home.webp" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons" loading="lazy"></div></div></div></section>
+<div class="frame"><i><s></s><s></s><s></s></i><img src="assets/img/twzee-home.webp" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons" loading="lazy"></div></div>
+</article>
+</div></section>
 
 <section id="skills"><div class="wrap"><h2>What I work with</h2><div class="tabs" role="tablist" id="tabs"></div><div class="chips" id="chips" role="tabpanel" aria-live="polite"></div><p class="mono" id="depth"></p></div></section>
 
-<section id="edu"><div class="wrap cols"><div><h2>Education</h2><ul class="tl"><li><b>B.Sc. Computer Science</b><br>Godfrey Okoye University, 2026</li><li>Expert Systems · Computer Networks and Communication · Compiler Construction · Structured Programming · Human Computer Interaction · Systems Analysis and Design</li></ul></div>
-<div><h2>Say hello</h2><p>Looking for an entry-level AI/ML or software engineering role. Based in Nigeria, open to remote work, and willing to relocate for the right opportunity.</p><button class="mail mag" id="mail" data-cur="Copy">chimdiazie2022@gmail.com</button><div class="row" style="justify-content:flex-start;margin-top:1.5rem"><a class="btn solid" href="CV.pdf" download>Download CV</a><a class="btn" href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a></div></div></div></section>
+<section id="about"><div class="wrap cols"><div><h2>About</h2>
+<p>I just graduated in Computer Science and spent my final year on one question: when a model says a brain scan looks like early Alzheimer's, can a doctor see why?</p>
+<p>So I built the classifier, the explanation layer and the hospital app around them, and made it work on a laptop with no GPU. I report the weak results next to the strong ones, and I fix what I find.</p>
+<p class="mono">Education: B.Sc. Computer Science, Godfrey Okoye University, 2026. Thesis: <span class="todo">[TODO: thesis title]</span></p></div>
+<div class="por" data-cur="Swap" id="por" role="img" aria-label="Portrait of Chimdiume Azie. Hover or tap to swap photos."><img src="assets/img/portrait-1.webp" alt=""><img src="assets/img/portrait-2.webp" alt=""></div></div></section>
+
+<section id="contact"><div class="wrap"><h2>Say hello</h2><p>Looking for an entry-level AI/ML or software engineering role. Based in Nigeria, open to remote work, and willing to relocate for the right opportunity.</p><button class="mail mag" id="mail" data-cur="Copy">chimdiazie2022@gmail.com</button><div class="row" style="justify-content:flex-start;margin-top:1.5rem"><a class="btn solid" href="CV.pdf" download>Download CV</a><a class="btn" href="https://github.com/Achimdi" target="_blank" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener">LinkedIn</a></div></div></section>
 </main>
 <script>
 const D={email:'chimdiazie2022@gmail.com',
