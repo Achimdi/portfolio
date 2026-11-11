@@ -169,6 +169,12 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 .flow .tl{text-anchor:start;font:11px var(--m)}.flow .hl{fill:var(--hot)}
 .demo{min-height:0}.demo .route{color:#ffb4a8}.demo .hint{color:#9aa5b1;font-size:.9rem}
 .demo .seg button,.demo .ask button{min-height:44px}
+/* refresh: Twzee */
+.pbr{display:grid;grid-template-columns:max-content 1fr;gap:.7rem 1.2rem;margin:0 0 1.5rem}
+.pbr dt{font:.78rem/1.9 var(--m);text-transform:uppercase;letter-spacing:.06em;color:var(--mid)}.pbr dd{margin:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.slot{aspect-ratio:1200/567;border:1px dashed var(--mid);border-radius:6px;display:grid;place-items:center;padding:.8rem;text-align:center;font-size:.85rem}
+@media(max-width:700px){.pbr{grid-template-columns:1fr;gap:.2rem}.pbr dd{margin-bottom:.6rem}.pair{grid-template-columns:1fr}}
 </style></head><body>
 <div id="pre" role="dialog" aria-label="Intro"><h2 id="pn" aria-label="Chimdiume Azie"></h2><button id="skip">Skip intro</button></div>
 <nav><a class="brand" id="brand" href="#top" aria-label="Chimdiume Azie, home">Chimdiume Azie</a>
@@ -354,16 +360,22 @@ h5{font:600 1.05rem var(--b);margin:0 0 .7rem}* + h5{margin-top:1.6rem}
 <h3 class="pt" id="twzee-h">Twzee Foods</h3>
 <p class="out">A live menu and WhatsApp ordering website for a Nigerian healthy-food business.</p>
 <ul class="tags" aria-label="Role and stack"><li class="role">Designer and developer</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Cloudflare</li></ul>
-<ul class="facts">
-<li>Visitors browse the full menu, pick sizes and extras, and send a ready-written order to the business on WhatsApp.</li>
-<li>Mobile-first, plain HTML, CSS and JavaScript. Every price lives in one file the owner can update.</li>
-<li>Hosted on Cloudflare, with opening hours and a live open or closed status.</li>
-</ul>
+<dl class="pbr">
+<dt>Problem</dt><dd>Customers needed to see the full menu and prices on their phones and send an order the business could act on. <span class="todo">[TODO: confirm, or say how orders worked before]</span></dd>
+<dt>What I built</dt><dd>A mobile-first menu where visitors pick sizes and extras and send a ready-written order on WhatsApp. Plain HTML, CSS and JavaScript, every price in one file the owner can update, opening hours with a live open or closed status, hosted on Cloudflare.</dd>
+<dt>Result</dt><dd>Live at twzee.foodss.workers.dev. <span class="todo">[TODO: a real outcome: orders through the site, owner feedback, or time saved]</span> Lighthouse (mobile, 11 Nov 2026): Accessibility, Best Practices and SEO 100. Performance only 45 to 64 across two runs, held back by a 5.8 MB autoplay hero video; compressing it is the next fix.</dd>
+</dl>
 <p class="links"><a class="btn solid" href="https://twzee.foodss.workers.dev/" target="_blank" rel="noopener">Visit the live site</a><a class="btn" href="https://github.com/Achimdi/twzee" target="_blank" rel="noopener">Code on GitHub</a></p>
 </div>
-<figure class="cvis"><a class="zoom" href="assets/img/twzee-home.webp"><img src="assets/img/twzee-home.webp" width="1200" height="567" loading="lazy" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons."></a><figcaption>Home page of the live site</figcaption></figure>
+<div class="cvis pair">
+<figure><a class="zoom" href="assets/img/twzee-home.webp"><img src="assets/img/twzee-home.webp" width="1200" height="567" loading="lazy" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons."></a><figcaption>Home page of the live site</figcaption></figure>
+<figure><div class="slot"><span class="todo">[TODO: screenshot of the menu next to the ready-written WhatsApp order message]</span></div><figcaption>Menu and the WhatsApp order it produces</figcaption></figure>
+</div>
 </div>
 <details class="tech"><summary>Technical details</summary><div>
+<table><caption>Lighthouse 12.8, mobile, live site, 11 Nov 2026</caption><thead><tr><th scope="col">Category</th><th scope="col">Run 1</th><th scope="col">Run 2</th></tr></thead><tbody>
+<tr><th scope="row">Performance</th><td>64</td><td>45</td></tr><tr><th scope="row">Accessibility</th><td>100</td><td>100</td></tr><tr><th scope="row">Best Practices</th><td>100</td><td>100</td></tr><tr><th scope="row">SEO</th><td>100</td><td>100</td></tr></tbody></table>
+<p>The largest paint is the autoplay hero video (5.8 MB file). The menu photos are JPEGs of up to 270 KB; converting them to WebP is the other easy win.</p>
 <p class="mono">Stack: HTML, CSS, JavaScript, Git and GitHub, Cloudflare Workers (static assets).</p>
 </div></details>
 </article>
