@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chimdiume Azie · AI/ML developer</title>
-<meta name="description" content="Chimdiume Azie, AI/ML developer (B.Sc. Computer Science 2026, Nigeria). Nellow, a web-search AI agent that cites its sources; NeuroScan AI, explainable Alzheimer's MRI classification; and Twzee Foods. Open to entry-level AI/ML and software roles.">
+<meta name="description" content="Chimdiume Azie, AI/ML developer (B.Sc. Computer Science 2026, Nigeria). Nellow, a web-search AI agent that cites its sources; NeuroScan AI, explainable Alzheimer's MRI classification; Tallybox, stock and sales for small businesses; and Twzee Foods. Open to entry-level AI/ML and software roles.">
 <link rel="canonical" href="https://achimdi.github.io/portfolio/">
 <meta name="theme-color" content="#0A1628">
 <meta property="og:type" content="website">
@@ -141,6 +141,53 @@
         </details>
       </article>
 
+      <article class="project" aria-labelledby="tallybox-title">
+        <div class="project-grid">
+          <figure class="media">
+            <div class="frame">
+              <video controls playsinline preload="metadata" poster="assets/img/tallybox-poster.webp" width="1916" height="896" data-fallback="assets/img/tallybox-home.webp" data-fallback-alt="Tallybox home page: the headline Know your stock. Trust every sale., beside a phone showing a new order at Sunrise Pharmacy.">
+                <source src="assets/videos/tallybox.mp4" type="video/mp4">
+                Your browser can't play this video. <a href="assets/videos/tallybox.mp4">Download the Tallybox demo (MP4)</a>.
+              </video>
+            </div>
+            <figcaption>Demo: Tallybox inventory and sales app.</figcaption>
+          </figure>
+
+          <div class="project-body">
+            <h3 id="tallybox-title">Tallybox</h3>
+            <p>Inventory and sales for shops, pharmacies and restaurants, opened from a link on the phones they already have. Every sale takes stock off automatically, and an order only counts once staff tick that payment was received.</p>
+            <p class="meta">Role: designer and developer.</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>React</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL</li><li>Cloudflare</li>
+            </ul>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://tallybox.pages.dev/">Visit live site<span class="sr-only">: Tallybox</span></a>
+              <a class="btn btn-secondary" href="https://github.com/Achimdi/tallybox">GitHub<span class="sr-only"> repository for Tallybox</span></a>
+            </div>
+          </div>
+        </div>
+
+        <details class="tech">
+          <summary>Technical details</summary>
+          <div class="tech-body">
+            <dl class="facts">
+              <div><dt>Stack</dt><dd>React and TypeScript (Vite, Tailwind CSS, TanStack Query, Zod), with Supabase for Postgres, sign-in and Edge Functions (Deno). Hosted on Cloudflare Pages as an installable web app.</dd></div>
+              <div><dt>Roles</dt><dd>Staff take orders; owners also see totals, cost prices, reports and settings. A developer area issues single-use activation codes and manages each business's access period.</dd></div>
+              <div><dt>Data rules</dt><dd>Each business sees only its own data, enforced by Row Level Security. The browser never writes to tables: every change goes through a database function or Edge Function that checks who is asking.</dd></div>
+              <div><dt>Features</dt><dd>Hold an order while a transfer arrives, shared supplies such as packaging that several items draw on, reports for any date range with CSV export, and receipts as an image or PDF.</dd></div>
+              <div><dt>Security</dt><dd>Cloudflare Turnstile on sign-in and registration, checked on the server, a Content Security Policy, and personal data removed from logs.</dd></div>
+              <div><dt>Testing</dt><dd>Unit and component tests (Vitest), database tests (pgTAP), Edge Function tests (Deno) and Playwright end-to-end tests on Android, Chrome, Firefox and iPhone, with automated accessibility checks. CI runs them on every push to main; a weekly job takes an encrypted production backup.</dd></div>
+            </dl>
+            <div class="shots">
+              <figure class="wide">
+                <a href="assets/img/tallybox-home.webp"><img src="assets/img/tallybox-home.webp" width="1200" height="640" loading="lazy" alt="Tallybox home page: the headline Know your stock. Trust every sale., beside a phone showing a new order at Sunrise Pharmacy."></a>
+                <figcaption>Home page.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </article>
+
       <article class="project" aria-labelledby="nellow-title">
         <div class="project-grid">
           <figure class="media">
@@ -186,7 +233,7 @@
         <div class="project-grid">
           <figure class="media">
             <div class="frame">
-              <video controls playsinline preload="metadata" poster="assets/img/twzee-poster.webp" width="1912" height="914" data-fallback="assets/img/twzee-home.webp" data-fallback-alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons.">
+              <video controls playsinline preload="metadata" poster="assets/img/twzee-poster.webp" width="1914" height="894" data-fallback="assets/img/twzee-home.webp" data-fallback-alt="Twzee Foods home page: the headline Healthy tastes better here, with Order now and Catering and trays buttons beside a yoghurt parfait photo.">
                 <source src="assets/videos/twzee.mp4" type="video/mp4">
                 Your browser can't play this video. <a href="assets/videos/twzee.mp4">Download the Twzee Foods demo (MP4)</a>.
               </video>
@@ -216,7 +263,7 @@
             </ul>
             <div class="shots">
               <figure class="wide">
-                <a href="assets/img/twzee-home.webp"><img src="assets/img/twzee-home.webp" width="1200" height="567" loading="lazy" alt="Twzee Foods home page: the headline Healthy tastes better here, with menu and WhatsApp order buttons."></a>
+                <a href="assets/img/twzee-home.webp"><img src="assets/img/twzee-home.webp" width="1200" height="640" loading="lazy" alt="Twzee Foods home page: the headline Healthy tastes better here, with Order now and Catering and trays buttons beside a yoghurt parfait photo."></a>
                 <figcaption>Home page.</figcaption>
               </figure>
             </div>
@@ -232,7 +279,7 @@
       <div class="skills">
         <div class="skill-group">
           <h3>Languages</h3>
-          <ul><li>Python</li><li>JavaScript</li><li>HTML/CSS</li></ul>
+          <ul><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>HTML/CSS</li></ul>
         </div>
         <div class="skill-group">
           <h3>ML &amp; AI</h3>
@@ -243,8 +290,8 @@
           <ul><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>Seaborn</li></ul>
         </div>
         <div class="skill-group">
-          <h3>Backend &amp; tools</h3>
-          <ul><li>Flask</li><li>JWT auth</li><li>SQLite/SQLAlchemy</li><li>Git</li><li>GitHub</li><li>Cloudflare</li></ul>
+          <h3>Web, backend &amp; tools</h3>
+          <ul><li>React</li><li>Flask</li><li>Supabase (PostgreSQL)</li><li>JWT auth</li><li>SQLite/SQLAlchemy</li><li>Playwright</li><li>Vitest</li><li>Git</li><li>GitHub</li><li>Cloudflare</li></ul>
         </div>
       </div>
     </div>
