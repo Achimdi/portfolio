@@ -20,8 +20,7 @@ Nothing in this list appears on the page. Each item is either missing evidence, 
   <div class="actions"><a class="btn btn-secondary" href="https://github.com/Achimdi/neuroscan-ai">GitHub<span class="sr-only"> repository for NeuroScan AI</span></a></div>
   ```
 - [ ] **Twzee Foods: usage numbers or owner feedback.** Examples are orders per week, visits, or a short quote from the owner. Use them only if you have them in writing.
-- [ ] **Tallybox: real users.** The video shows a business called "Dollar Tree" with sales and staff (Makuo, Chiamaka). If that is a real business using Tallybox, its name, how long it has used it, or a line from the owner would be strong evidence. Only add it with their permission.
-- [ ] **Tallybox: "small and large businesses".** The live site and README say shops, pharmacies and restaurants, so the portfolio says that too. Add "large businesses" only if a large business has used it.
+- [ ] **Tallybox: real users.** The demo video shows a business with real-looking sales. Its name, the owner's name and the staff names are blurred. If it is a real business using Tallybox, its name, how long it has used it, or a line from the owner would be strong evidence. Only add it with their permission.
 - [ ] **Nellow: a sample result.** A real question and Nellow's answer with its cited sources, as a screenshot or short text.
 
 ## Media
