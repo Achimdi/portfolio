@@ -4,7 +4,7 @@ Nothing in this list appears on the site. Each item is missing evidence, a decis
 
 ## Evidence still missing
 
-- [ ] **NeuroScan: is the train/validation split by patient?** OASIS has many slices per person. If slices from one patient appear in both training and validation, the 98.66% is inflated. Confirm how the 80/20 split was made.
+- [x] **NeuroScan: the train/validation split keeps each patient's scans together** (confirmed by you). The case study now says so.
 - [ ] **NeuroScan: macro-F1 and per-class recall.** Calculated from the counts in `assets/img/confusion-matrix.webp`. Check them against your notebook before publishing anything:
 
   | Class | Test images | Recall | Precision | F1 |
@@ -17,7 +17,8 @@ Nothing in this list appears on the site. Each item is missing evidence, a decis
   Macro-F1 is 0.34 and balanced accuracy is 40.4%. Overall accuracy is 77.35%, which matches the site.
 - [ ] **NeuroScan: GitHub repo is private.** The case study says so. If you make https://github.com/Achimdi/neuroscan-ai public, add `{ label: 'GitHub', url: 'https://github.com/Achimdi/neuroscan-ai', github: true }` to its `links` in `src/data.mjs`, remove `repoNote`, and rebuild.
 - [ ] **Twzee Foods: usage numbers or owner feedback.** Orders per week, visits, or a short quote from the owner. Only if you have them in writing.
-- [ ] **Tallybox: real users.** The demo video shows a business with real-looking sales (its name, the owner and staff names are blurred). If it is a real customer, its name, how long it has used Tallybox, or a line from the owner would be strong evidence. Only with their permission.
+- [x] **Tallybox demo business** is a test business (confirmed by you). The video caption now says "Demo on a test business".
+- [ ] **Tallybox: real users.** If a real business starts using Tallybox, its name, how long it has used it, or a line from the owner would be strong evidence. Only with their permission.
 
 ## Please confirm
 
@@ -28,7 +29,8 @@ Nothing in this list appears on the site. Each item is missing evidence, a decis
 
 ## Found while checking your other sites
 
-- [ ] **Twzee Foods free-delivery threshold.** The banner at the top of the live site says free delivery from ₦25,000, but the ordering code (`js/menu-data.js`, `DELIVERY.freeOver`) uses ₦30,000. The portfolio avoids quoting a number until this is fixed.
+- [x] **Twzee Foods free delivery is ₦30,000.** The live site and its code agree, and the portfolio now says ₦30,000. The laptop screenshot was retaken from the live site.
+- [ ] **Twzee demo video still shows the old ₦25,000 banner** in its first few seconds (recorded on 21 Nov). The poster now uses a frame without it. Re-record the video if you want it to match exactly.
 
 ## Media
 

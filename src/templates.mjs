@@ -190,9 +190,18 @@ function contactPanel(r) {
         ${copyEmail()}
         <a class="text-link" href="${r}contact/">More ways to reach me ${icon('arrowRight', { size: 16 })}</a>
       </div>
+      ${profileLinks('profile-links profile-links--cta')}
     </div>
   </div>
 </section>`;
+}
+
+// Email plus GitHub, LinkedIn and Instagram, as a row of labelled links.
+function profileLinks(cls) {
+  return `<ul class="${cls}" aria-label="Email and profiles">
+    <li><a href="${gmailCompose()}" ${ext}>${icon('mail', { size: 18 })}<span>Email</span><span class="sr-only"> (opens Gmail in a new tab)</span></a></li>${site.social.map(s => `
+    <li><a href="${s.url}" ${ext}>${icon(s.id, { size: 18 })}<span>${s.label}</span><span class="sr-only"> ${s.handle} (opens in a new tab)</span></a></li>`).join('')}
+  </ul>`;
 }
 
 function copyEmail(cls = 'btn btn-ghost') {
@@ -227,6 +236,7 @@ export function homePage() {
         <li>${icon('pin', { size: 18 })}${site.location}</li>
         <li><a href="${r}${site.cv}" download="Chimdiume-Azie-CV.pdf">${icon('download', { size: 18 })}Download CV</a></li>
       </ul>
+      ${profileLinks('profile-links profile-links--hero')}
     </div>
     <div class="hero-visual">
       <div class="portrait-frame">

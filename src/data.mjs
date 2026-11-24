@@ -111,7 +111,7 @@ export const projects = [
       { title: 'Dashboards', text: 'The admin dashboard counts doctors, patients, scans, unused codes and transfers; each doctor sees their patients broken down by predicted stage.' },
     ],
     build: [
-      ['Data', 'OASIS Alzheimer\'s MRI (Kaggle): 44,355 training images (80/20 split) and a separate test set of 46,184.'],
+      ['Data', 'OASIS Alzheimer\'s MRI (Kaggle): 44,355 training images and a separate test set of 46,184. The 80/20 training and validation split keeps each patient\'s scans together, so no patient appears on both sides.'],
       ['Model', 'EfficientNet-B0 with transfer learning (timm): 4,012,672 parameters fine-tuned, 224×224 input.'],
       ['Training', 'Class-weighted cross-entropy, light augmentation, Adam 1e-4, batch 32, 25 epochs: about 119 hours on a laptop with no GPU (training, not inference).'],
       ['Grad-CAM', 'For Mild and Moderate cases the heatmaps concentrated around the hippocampus, medial temporal lobe and ventricles: consistent with known Alzheimer\'s regions, but not clinically validated.'],
@@ -132,7 +132,7 @@ export const projects = [
     ],
     challenges: [
       { problem: 'No GPU for training', solution: 'I used transfer learning on a small pretrained network, EfficientNet-B0 with about 4 million parameters, and kept training to 25 epochs. Even so, training took about 119 hours on a laptop CPU.' },
-      { problem: 'A score that looked too good', solution: 'The model reached 98.66% on validation but 77.35% on the separate test set, which is 88.5% NonDemented. I report both numbers, treat the gap as a warning about the split rather than a verdict on the idea, and plan stratified splitting next.' },
+      { problem: 'A score that looked too good', solution: 'The model reached 98.66% on validation but 77.35% on the separate test set, which is 88.5% NonDemented. The training split keeps each patient\'s scans together, so the gap is not one patient leaking into both sides. I report both numbers, treat the gap as a warning about the split rather than a verdict on the idea, and plan stratified splitting next.' },
       { problem: 'A model too large to ship with the code', solution: 'The trained weights live on Hugging Face, and the app downloads them when it starts, so the deployed app on Render stays small.' },
     ],
     outcomeHtml: `<p>Final-year project for my B.Sc. in Computer Science (2026). The web app is deployed and the trained model is published on Hugging Face.</p><p><strong>It is a research prototype: not clinically validated and not a medical device.</strong></p>`,
@@ -158,7 +158,7 @@ export const projects = [
       { label: 'Visit live site', url: 'https://tallybox.pages.dev/' },
       { label: 'GitHub', url: 'https://github.com/Achimdi/tallybox', github: true },
     ],
-    video: { src: 'assets/videos/tallybox.mp4', poster: 'assets/img/tallybox-poster.webp', w: 1916, h: 896, caption: 'Demo: registering, signing in as an owner, and the dashboard, orders, items and reports.', fallback: 'assets/img/tallybox-home.webp' },
+    video: { src: 'assets/videos/tallybox.mp4', poster: 'assets/img/tallybox-poster.webp', w: 1916, h: 896, caption: 'Demo on a test business: registering, signing in as an owner, and the dashboard, orders, items and reports. Names in the video are blurred.', fallback: 'assets/img/tallybox-home.webp' },
     cardImage: { src: 'assets/img/tallybox-dashboard.webp', w: 1280, h: 800, alt: 'Tallybox owner dashboard on demo data: sales today, orders, payment methods and top items for Sunrise Pharmacy.' },
     cardPhone: { src: 'assets/img/tallybox-neworder.webp', w: 600, h: 1298, alt: 'Tallybox new-order screen on a phone, with items, prices, stock levels and a cart of four items.' },
     problemHtml: `<p>Businesses that sell over the counter work fast, take cash and bank transfers, and need staff to be quick. Without a record of every sale it is hard to know what is on the shelf, what sold and whether the day's money matches.</p>`,
@@ -292,7 +292,7 @@ export const projects = [
       { label: 'GitHub', url: 'https://github.com/Achimdi/twzee', github: true },
     ],
     video: { src: 'assets/videos/twzee.mp4', poster: 'assets/img/twzee-poster.webp', w: 1914, h: 894, caption: 'Demo: browsing the menu, choosing options and building an order.', fallback: 'assets/img/twzee-home.webp' },
-    cardImage: { src: 'assets/img/twzee-home.webp', w: 1200, h: 640, alt: 'Twzee Foods home page: the headline Healthy tastes better here, with Order now and Catering and trays buttons beside a yoghurt parfait photo.' },
+    cardImage: { src: 'assets/img/twzee-home.webp', w: 1200, h: 640, alt: 'Twzee Foods home page: the headline Healthy tastes better here, Order now and Catering and trays buttons, and a banner offering free delivery within Enugu City on orders from ₦30,000.' },
     cardPhones: [
       { src: 'assets/img/twzee-menu.webp', w: 600, h: 1298, alt: 'Twzee Foods menu on a phone: the Shawarma and Bites category with Shawarma, Club Sandwich and Chicken and Chips.' },
       { src: 'assets/img/twzee-product.webp', w: 600, h: 1298, alt: 'Shawarma options on a phone: four combos with prices and optional extra chicken or beef.' },
@@ -308,7 +308,7 @@ export const projects = [
     roleHtml: `<p>I designed and built the site: the layout and visual design, the menu and ordering flow, the photo pipeline and the hosting.</p>`,
     features: [
       { title: 'Menu by category', text: 'Photos, prices, sizes, combos and optional add-ons, with category chips to jump between sections.' },
-      { title: 'Order basket', text: 'Delivery or pickup, with a flat ₦1,500 delivery fee within Enugu City, free delivery on larger orders and a bar showing how close the order is.' },
+      { title: 'Order basket', text: 'Delivery or pickup: a flat ₦1,500 delivery fee within Enugu City, free delivery on orders from ₦30,000, and a bar showing how close the order is.' },
       { title: 'Order on WhatsApp', text: '"Send my order" opens WhatsApp with the order written out. Nothing is sent until the customer presses send.' },
       { title: 'Live opening hours', text: 'An "Open now" or "Closed" badge for Monday to Saturday, 8am to 6pm, always in Nigerian time.' },
       { title: 'Catering and trays', text: 'Event packs and a custom food tray, with a quick way to ask for a quote.' },
@@ -327,7 +327,7 @@ export const projects = [
       { src: 'assets/img/twzee-menu.webp', w: 600, h: 1298, phone: true, alt: 'Menu on a phone: Shawarma and Bites, from ₦1,500, with Shawarma, Club Sandwich and Chicken and Chips cards.', caption: 'Browse the menu by category.' },
       { src: 'assets/img/twzee-product.webp', w: 600, h: 1298, phone: true, alt: 'Shawarma options: four combos from ₦4,000 to ₦5,500, and extra chicken or beef for ₦500.', caption: 'Pick a combo and any extras.' },
       { src: 'assets/img/twzee-order.webp', w: 600, h: 1298, phone: true, alt: 'Order summary: delivery for ₦1,500 or pickup, a free-delivery progress bar, name and address fields, and Send my order.', caption: 'Send the order on WhatsApp.' },
-      { src: 'assets/img/twzee-home.webp', w: 1200, h: 640, alt: 'Twzee Foods home page on a laptop: Healthy tastes better here, with Order now and Catering and trays buttons.', caption: 'The home page on a laptop.', wide: true },
+      { src: 'assets/img/twzee-home.webp', w: 1200, h: 640, alt: 'Twzee Foods home page on a laptop: Healthy tastes better here, with Order now and Catering and trays buttons, and the free-delivery banner.', caption: 'The home page on a laptop.', wide: true },
     ],
     challenges: [
       { problem: 'Prices that change often', solution: 'Everything the owner might change, from products and prices to contact details, lives in one documented file, so an update is a small edit rather than a code change.' },
