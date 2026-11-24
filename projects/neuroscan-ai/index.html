@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroScan AI · Case study · Chimdiume Azie</title>
+<meta name="description" content="NeuroScan AI: Can a doctor see why a model flags early Alzheimer's? NeuroScan AI classifies brain MRI scans into four Alzheimer's stages, shows the regions behind each prediction with Grad-CAM heatmaps, and wraps both in a hospital web app.">
+<link rel="canonical" href="https://achimdi.github.io/portfolio/projects/neuroscan-ai/">
+<meta name="theme-color" content="#080B12">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chimdiume Azie">
+<meta property="og:url" content="https://achimdi.github.io/portfolio/projects/neuroscan-ai/">
+<meta property="og:title" content="NeuroScan AI · Case study · Chimdiume Azie">
+<meta property="og:description" content="NeuroScan AI: Can a doctor see why a model flags early Alzheimer's? NeuroScan AI classifies brain MRI scans into four Alzheimer's stages, shows the regions behind each prediction with Grad-CAM heatmaps, and wraps both in a hospital web app.">
+<meta property="og:image" content="https://achimdi.github.io/portfolio/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chimdiume Azie, software and AI/ML developer: portrait with the headline Building software that solves real problems.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NeuroScan AI · Case study · Chimdiume Azie">
+<meta name="twitter:description" content="NeuroScan AI: Can a doctor see why a model flags early Alzheimer's? NeuroScan AI classifies brain MRI scans into four Alzheimer's stages, shows the regions behind each prediction with Grad-CAM heatmaps, and wraps both in a hospital web app.">
+<meta name="twitter:image" content="https://achimdi.github.io/portfolio/assets/og.jpg">
+<meta name="twitter:image:alt" content="Chimdiume Azie, software and AI/ML developer: portrait with the headline Building software that solves real problems.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/space-grotesk-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../../assets/js/site.js" defer></script>
+</head>
+<body class="page-case">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="wrap header-row">
+    <a class="brand" href="../../" aria-label="Chimdiume Azie, home"><svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="ca-grad-hdr" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#398BFF"/><stop offset="1" stop-color="#9875FF"/></linearGradient></defs><rect x="0.75" y="0.75" width="30.5" height="30.5" rx="8.25" fill="#0D1422" stroke="url(#ca-grad-hdr)" stroke-opacity=".55" stroke-width="1.5"/><path d="M15.2 11.2A5.6 5.6 0 1 0 15.2 20.8" fill="none" stroke="url(#ca-grad-hdr)" stroke-width="3" stroke-linecap="round"/><path d="M16.9 22.2 21.3 9.8l4.4 12.4" fill="none" stroke="url(#ca-grad-hdr)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.6 17.9h5.4" stroke="url(#ca-grad-hdr)" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-name">Chimdiume Azie</span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list"><li><a href="../../">Home</a></li><li><a href="../../projects/" aria-current="page">Projects</a></li><li><a href="../../about/">About</a></li><li><a href="../../contact/">Contact</a></li></ul>
+      <a class="btn btn-primary btn-sm nav-cta" href="../../contact/">Let's talk</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="nav-toggle-open"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></span><span class="nav-toggle-close"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="sr-only">Menu</span>
+    </button>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<article class="case case--neuro">
+  <header class="case-head">
+    <div class="hero-bg" aria-hidden="true"><span class="glow glow-a"></span><span class="glow glow-b"></span><span class="grid-lines"></span></div>
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Projects</a></li><li><span aria-current="page">NeuroScan AI</span></li></ol></nav>
+      <p class="case-cat">Medical AI research prototype</p>
+      <h1 class="page-title">NeuroScan AI</h1>
+      <p class="lead">Can a doctor see why a model flags early Alzheimer's? NeuroScan AI classifies brain MRI scans into four Alzheimer's stages, shows the regions behind each prediction with Grad-CAM heatmaps, and wraps both in a hospital web app.</p>
+      <div class="actions"><a class="btn btn-primary" href="https://neuroscan-ai-yjp8.onrender.com/" target="_blank" rel="noopener">Open the web app<span class="sr-only"> for NeuroScan AI (opens in a new tab)</span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a class="btn btn-ghost" href="https://huggingface.co/ChimdiAzie/neuroscan-alzheimer-model" target="_blank" rel="noopener">Model on Hugging Face<span class="sr-only"> for NeuroScan AI (opens in a new tab)</span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
+      <p class="repo-note">The source repository is private.</p>
+      <dl class="facts"><div><dt>Role</dt><dd>Designer and developer</dd></div><div><dt>Context</dt><dd>Final-year project, B.Sc. Computer Science, 2026</dd></div><div><dt>Status</dt><dd>Research prototype; web app deployed</dd></div><div><dt>Stack</dt><dd>PyTorch, Flask, SQLite</dd></div></dl>
+    </div>
+    <div class="wrap case-media"><figure class="cam-viewer" style="view-transition-name: shot-neuroscan-ai">
+      <div class="cam-stage">
+        <img src="../../assets/img/mri-slice.webp" width="336" height="408" alt="Axial brain MRI slice from the app.">
+        <img class="cam-overlay" src="../../assets/img/gradcam.webp" width="336" height="408" alt="Grad-CAM heatmap for the same slice. Warm colours mark the regions that most influenced the prediction.">
+      </div>
+      <div class="cam-panel">
+        <p class="cam-title">Grad-CAM viewer</p>
+        <p class="cam-text">Slide to fade the heatmap in and out over the scan. Warm colours mark the regions that most influenced the prediction.</p>
+        <label class="cam-label" for="cam-range">Heatmap opacity</label>
+        <input id="cam-range" type="range" min="0" max="100" step="5" value="100" aria-valuetext="Heatmap 100% visible">
+        <div class="cam-ends" aria-hidden="true"><span>MRI only</span><span>Grad-CAM</span></div>
+        <figcaption>Example prediction: VeryMildDemented.</figcaption>
+      </div>
+    </figure></div>
+  </header>
+
+  <div class="wrap case-layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol><li><a href="#problem">The problem</a></li><li><a href="#objectives">Objectives</a></li><li><a href="#role">My role</a></li><li><a href="#features">Main features</a></li><li><a href="#build">How it's built</a></li><li><a href="#results">Results</a></li><li><a href="#stack">Technologies</a></li><li><a href="#screens">Evaluation and screens</a></li><li><a href="#challenges">Challenges and solutions</a></li><li><a href="#outcome">Outcome and status</a></li></ol>
+    </nav>
+    <div class="case-body">
+      <section id="problem" class="case-section" aria-labelledby="problem-h"><h2 id="problem-h">The problem</h2><p>Deep-learning models can flag signs of Alzheimer's in an MRI scan, but a bare label gives a doctor no way to check the reasoning. I spent my final year on one question: when a model says a scan looks like early Alzheimer's, can a doctor see why?</p></section>
+      <section id="objectives" class="case-section" aria-labelledby="objectives-h"><h2 id="objectives-h">Objectives</h2>
+        <ul class="checklist"><li><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Classify MRI scans into four stages: NonDemented, VeryMildDemented, MildDemented and ModerateDemented.</span></li><li><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Show the regions behind each prediction with Grad-CAM, so a prediction can be inspected instead of taken on trust.</span></li><li><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Put the model inside a workflow a hospital would recognise: admins, doctors, patients and their scans.</span></li><li><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Report results honestly, including where the model is weak.</span></li></ul></section>
+      <section id="role" class="case-section" aria-labelledby="role-h"><h2 id="role-h">My role</h2><p>I built the whole system: preparing the data, training and evaluating the model, generating Grad-CAM heatmaps, and the Flask API and web interface around them.</p></section>
+      <section id="features" class="case-section" aria-labelledby="features-h"><h2 id="features-h">Main features</h2>
+        <div class="feature-grid"><div class="feat" data-reveal><h3>Four-stage classification</h3><p>EfficientNet-B0, fine-tuned with transfer learning on 224×224 MRI slices.</p></div><div class="feat" data-reveal><h3>Grad-CAM heatmaps</h3><p>Each prediction comes with a heatmap of the regions that most influenced it.</p></div><div class="feat" data-reveal><h3>Admin and Doctor roles</h3><p>JWT sign-in. Admins issue single-use registration codes, and can deactivate or reactivate doctor accounts.</p></div><div class="feat" data-reveal><h3>Patient records and MRI upload</h3><p>Doctors add patients, upload scans and see each scan's prediction with its heatmap.</p></div><div class="feat" data-reveal><h3>Transfers with history</h3><p>Admins move patients between doctors, and every transfer is recorded as an audit trail.</p></div><div class="feat" data-reveal><h3>Dashboards</h3><p>The admin dashboard counts doctors, patients, scans, unused codes and transfers; each doctor sees their patients broken down by predicted stage.</p></div></div></section>
+      <section id="build" class="case-section" aria-labelledby="build-h"><h2 id="build-h">How it's built</h2>
+        <p class="section-note">Open any part for the detail.</p>
+        <div class="accordion"><details class="acc" open><summary>Data</summary><div class="acc-body"><p>OASIS Alzheimer's MRI (Kaggle): 44,355 training images (80/20 split) and a separate test set of 46,184.</p></div></details><details class="acc" open><summary>Model</summary><div class="acc-body"><p>EfficientNet-B0 with transfer learning (timm): 4,012,672 parameters fine-tuned, 224×224 input.</p></div></details><details class="acc"><summary>Training</summary><div class="acc-body"><p>Class-weighted cross-entropy, light augmentation, Adam 1e-4, batch 32, 25 epochs: about 119 hours on a laptop with no GPU (training, not inference).</p></div></details><details class="acc"><summary>Grad-CAM</summary><div class="acc-body"><p>For Mild and Moderate cases the heatmaps concentrated around the hippocampus, medial temporal lobe and ventricles: consistent with known Alzheimer's regions, but not clinically validated.</p></div></details><details class="acc"><summary>Web app</summary><div class="acc-body"><p>Flask REST API with separate modules for auth, admin, doctors and patients; Flask-JWT-Extended and Flask-SQLAlchemy over SQLite; an HTML, CSS and JavaScript front end. The trained model is downloaded from Hugging Face when the app starts, and the app is deployed on Render.</p></div></details></div></section>
+      
+      <section id="results" class="case-section" aria-labelledby="results-h">
+        <h2 id="results-h">Results</h2>
+        <div class="stats">
+          <p class="stat"><strong>98.66%</strong><span>validation accuracy</span></p>
+          <p class="stat"><strong>77.35%</strong><span>held-out test accuracy</span></p>
+        </div>
+        <p>The test set is heavily skewed (88.5% NonDemented), so I treat the gap as a warning about the split, not a verdict on the idea.</p>
+        <p class="disclaimer">Research prototype. Not clinically validated and not a medical device.</p>
+      </section>
+      <section id="stack" class="case-section" aria-labelledby="stack-h"><h2 id="stack-h">Technologies</h2><ul class="tech-list"><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-python"/></svg><span>Python</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-pytorch"/></svg><span>PyTorch</span></li><li class="tech tech--text"><span>timm</span></li><li class="tech tech--text"><span>torchvision</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-opencv"/></svg><span>OpenCV</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-scikitlearn"/></svg><span>scikit-learn</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-numpy"/></svg><span>NumPy</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-pandas"/></svg><span>Pandas</span></li><li class="tech tech--text"><span>Matplotlib</span></li><li class="tech tech--text"><span>Seaborn</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-flask"/></svg><span>Flask</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-jsonwebtokens"/></svg><span>Flask-JWT-Extended</span></li><li class="tech tech--text"><span>Flask-SQLAlchemy</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-sqlite"/></svg><span>SQLite</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-html5"/></svg><span>HTML, CSS, JavaScript</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-huggingface"/></svg><span>Hugging Face</span></li><li class="tech"><svg class="tech-logo" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="../../assets/icons/tech.svg#si-render"/></svg><span>Render</span></li></ul></section>
+      <section id="screens" class="case-section" aria-labelledby="screens-h"><h2 id="screens-h">Evaluation and screens</h2>
+        
+        <ul class="gallery">
+    <li class="shot" data-reveal>
+      <figure>
+        <a class="shot-link" href="../../assets/img/confusion-matrix.webp" aria-label="Open full-size image: Confusion matrix on the held-out test set."><img src="../../assets/img/confusion-matrix.webp" width="800" height="660" alt="Confusion matrix on the 46,184-image test set. Most NonDemented scans are correct; many are predicted VeryMildDemented, and no ModerateDemented scan is predicted correctly." loading="lazy" decoding="async"></a>
+        <figcaption>Confusion matrix on the held-out test set.</figcaption>
+      </figure>
+    </li>
+    <li class="shot" data-reveal>
+      <figure>
+        <a class="shot-link" href="../../assets/img/roc-curves.webp" aria-label="Open full-size image: ROC curves, one-vs-rest."><img src="../../assets/img/roc-curves.webp" width="800" height="636" alt="One-vs-rest ROC curves for the four classes." loading="lazy" decoding="async"></a>
+        <figcaption>ROC curves, one-vs-rest.</figcaption>
+      </figure>
+    </li>
+    <li class="shot shot--wide" data-reveal>
+      <figure>
+        <a class="shot-link" href="../../assets/img/training-curves.webp" aria-label="Open full-size image: Training and validation curves over 25 epochs."><img src="../../assets/img/training-curves.webp" width="900" height="321" alt="Training and validation loss and accuracy curves over 25 epochs." loading="lazy" decoding="async"></a>
+        <figcaption>Training and validation curves over 25 epochs.</figcaption>
+      </figure>
+    </li>
+    <li class="shot shot--center" data-reveal>
+      <figure>
+        <a class="shot-link" href="../../assets/img/neuroscan-signin.webp" aria-label="Open full-size image: Sign-in with Admin and Doctor roles."><img src="../../assets/img/neuroscan-signin.webp" width="700" height="620" alt="NeuroScan AI sign-in screen with Admin and Doctor roles." loading="lazy" decoding="async"></a>
+        <figcaption>Sign-in with Admin and Doctor roles.</figcaption>
+      </figure>
+    </li></ul></section>
+      <section id="challenges" class="case-section" aria-labelledby="challenges-h"><h2 id="challenges-h">Challenges and solutions</h2>
+        <div class="challenges"><div class="challenge" data-reveal><h3>No GPU for training</h3><p>I used transfer learning on a small pretrained network, EfficientNet-B0 with about 4 million parameters, and kept training to 25 epochs. Even so, training took about 119 hours on a laptop CPU.</p></div><div class="challenge" data-reveal><h3>A score that looked too good</h3><p>The model reached 98.66% on validation but 77.35% on the separate test set, which is 88.5% NonDemented. I report both numbers, treat the gap as a warning about the split rather than a verdict on the idea, and plan stratified splitting next.</p></div><div class="challenge" data-reveal><h3>A model too large to ship with the code</h3><p>The trained weights live on Hugging Face, and the app downloads them when it starts, so the deployed app on Render stays small.</p></div></div></section>
+      <section id="outcome" class="case-section" aria-labelledby="outcome-h"><h2 id="outcome-h">Outcome and status</h2><p>Final-year project for my B.Sc. in Computer Science (2026). The web app is deployed and the trained model is published on Hugging Face.</p><p><strong>It is a research prototype: not clinically validated and not a medical device.</strong></p>
+        <h3 class="sub-h">Next steps</h3><ul class="tags tags--loose"><li>Stratified splitting</li><li>GPU training</li><li>Local Nigerian hospital data</li><li>Clinical validation</li><li>Longitudinal tracking</li><li>A lightweight offline or mobile version</li></ul>
+        <div class="actions"><a class="btn btn-primary" href="https://neuroscan-ai-yjp8.onrender.com/" target="_blank" rel="noopener">Open the web app<span class="sr-only"> for NeuroScan AI (opens in a new tab)</span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a class="btn btn-ghost" href="https://huggingface.co/ChimdiAzie/neuroscan-alzheimer-model" target="_blank" rel="noopener">Model on Hugging Face<span class="sr-only"> for NeuroScan AI (opens in a new tab)</span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div></section>
+    </div>
+  </div>
+
+  <nav class="wrap case-nav" aria-label="More projects">
+    <a class="case-nav-link" href="../../projects/tallybox/"><span class="case-nav-dir"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Previous project</span><span class="case-nav-name">Tallybox</span></a>
+    <a class="case-nav-link case-nav-link--next" href="../../projects/nellow/"><span class="case-nav-dir">Next project<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="case-nav-name">Nellow</span></a>
+  </nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../../" aria-label="Chimdiume Azie, home"><svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="ca-grad-ftr" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#398BFF"/><stop offset="1" stop-color="#9875FF"/></linearGradient></defs><rect x="0.75" y="0.75" width="30.5" height="30.5" rx="8.25" fill="#0D1422" stroke="url(#ca-grad-ftr)" stroke-opacity=".55" stroke-width="1.5"/><path d="M15.2 11.2A5.6 5.6 0 1 0 15.2 20.8" fill="none" stroke="url(#ca-grad-ftr)" stroke-width="3" stroke-linecap="round"/><path d="M16.9 22.2 21.3 9.8l4.4 12.4" fill="none" stroke="url(#ca-grad-ftr)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.6 17.9h5.4" stroke="url(#ca-grad-ftr)" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-name">Chimdiume Azie</span></a>
+      <p>Software and AI/ML developer in Nigeria. Open to entry-level AI/ML and software engineering roles, remote or relocation.</p>
+      <a class="text-link" href="../../CV.pdf" download="Chimdiume-Azie-CV.pdf"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Download CV</a>
+    </div>
+    <nav class="footer-col" aria-label="Pages"><h2>Pages</h2><ul><li><a href="../../">Home</a></li><li><a href="../../projects/">Projects</a></li><li><a href="../../about/">About</a></li><li><a href="../../contact/">Contact</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Projects"><h2>Projects</h2><ul><li><a href="../../projects/tallybox/">Tallybox</a></li><li><a href="../../projects/neuroscan-ai/">NeuroScan AI</a></li><li><a href="../../projects/nellow/">Nellow</a></li><li><a href="../../projects/twzee-foods/">Twzee Foods</a></li></ul></nav>
+    <div class="footer-col"><h2>Elsewhere</h2><ul class="footer-social"><li><a href="https://github.com/Achimdi" target="_blank" rel="noopener" aria-label="GitHub (Achimdi)"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>GitHub</span></a></li><li><a href="https://www.linkedin.com/in/chimdiume-azie-73a477448/" target="_blank" rel="noopener" aria-label="LinkedIn (chimdiume-azie)"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/azie_web/" target="_blank" rel="noopener" aria-label="Instagram (@azie_web)"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span>Instagram</span></a></li></ul></div>
+  </div>
+  <div class="wrap footer-base"><p>© 2026 Chimdiume Azie</p><p>Built by hand with HTML, CSS and JavaScript.</p></div>
+</footer>
+</body>
+</html>
